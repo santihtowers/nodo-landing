@@ -295,6 +295,20 @@ nav{
 .paso h3{font-size:16px;font-weight:800;color:#fff;margin-bottom:8px}
 .paso p{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6}
 
+/* ── Nosotros ── */
+.nosotros-lead{max-width:720px;margin:0 auto 8px}
+.nosotros-lead p{font-size:16px;color:var(--gris-txt);line-height:1.75;margin-bottom:16px}
+.nosotros-lead p:last-child{margin-bottom:0}
+.nosotros-lead em{font-style:italic;color:#333}
+.divider{border-top:1px solid var(--borde);margin:48px 0}
+.duo-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.duo-card{background:var(--gris-lt);border-radius:14px;padding:28px}
+.duo-label{font-size:12px;font-weight:700;color:var(--verde-main);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+.duo-text{font-size:17px;color:var(--negro);font-weight:600;line-height:1.5}
+.principios-hdr{text-align:center;margin-bottom:32px}
+.principios-title{font-size:clamp(22px,3vw,28px);font-weight:900;letter-spacing:-.3px}
+.conviccion{max-width:640px;margin:0 auto;text-align:center;font-size:clamp(20px,2.6vw,26px);font-weight:800;color:var(--negro);line-height:1.45}
+
 /* ── Stats ── */
 .stats-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
@@ -416,6 +430,7 @@ footer{
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .testis{grid-template-columns:1fr}
   .precios-grid{grid-template-columns:1fr;max-width:360px}
+  .duo-grid{grid-template-columns:1fr}
   .nav-links{display:none}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -435,6 +450,7 @@ footer{
     <ul class="nav-links">
       <li><a href="#funciones">Funciones</a></li>
       <li><a href="#como">Cómo funciona</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#precios">Precios</a></li>
     </ul>
     <a href="https://wa.me/573115633264?text=Hola" class="nav-cta" target="_blank" rel="noopener">
@@ -621,6 +637,69 @@ footer{
         <p>La venta, el fiado o el inventario quedan registrados. El resumen del día está listo cuando lo pidas.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section class="sec" id="nosotros">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="eyebrow">Nosotros</div>
+      <h2 class="sec-title">Estamos construyendo la próxima generación del software empresarial.</h2>
+    </div>
+
+    <div class="nosotros-lead">
+      <p>Durante décadas, el software para negocios se diseñó alrededor de pantallas, menús y procesos que obligaban a las empresas a adaptarse a la tecnología. Creemos que la inteligencia artificial cambia esa lógica.</p>
+      <p>En Nodo estamos construyendo el <em>sistema operativo conversacional para pequeños y medianos negocios</em>, donde la interfaz no es un nuevo software, sino la herramienta que millones de empresas ya utilizan todos los días: <strong>WhatsApp</strong>.</p>
+      <p>Nuestro objetivo no es crear otro ERP. Es construir una nueva forma de operar un negocio.</p>
+      <p>Registrar una venta, consultar el inventario, emitir una factura electrónica o gestionar cuentas por cobrar debería ser tan simple como enviar un mensaje. La tecnología debe entender el contexto, ejecutar las tareas y desaparecer del proceso.</p>
+      <p style="font-weight:700;color:var(--negro)">Ese es el futuro que estamos construyendo.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="duo-grid">
+      <div class="duo-card">
+        <div class="duo-label">Nuestra misión</div>
+        <p class="duo-text">Simplificar la operación de los pequeños y medianos negocios mediante una experiencia conversacional impulsada por inteligencia artificial.</p>
+      </div>
+      <div class="duo-card">
+        <div class="duo-label">Nuestra visión</div>
+        <p class="duo-text">Ser el sistema operativo conversacional que transforme la forma en que las pequeñas y medianas empresas gestionan su operación en Latinoamérica.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="principios-hdr">
+      <h3 class="principios-title">Nuestros principios</h3>
+    </div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-ico">💬</div>
+        <h3>Conversaciones antes que interfaces</h3>
+        <p>Creemos que la mejor experiencia de usuario es aquella que no requiere aprendizaje. Si una persona sabe usar WhatsApp, también debería poder administrar su negocio.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">🎯</div>
+        <h3>Inteligencia artificial con propósito</h3>
+        <p>La IA no debe añadir complejidad. Debe comprender el contexto, automatizar tareas y permitir que las personas dediquen su tiempo a hacer crecer su negocio.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">⚡</div>
+        <h3>Simplicidad como ventaja</h3>
+        <p>Cada funcionalidad que construimos debe reducir pasos, ahorrar tiempo y eliminar fricción en la operación diaria.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">🔄</div>
+        <h3>Construimos para el día a día</h3>
+        <p>Diseñamos Nodo para resolver los procesos que realmente ocurren todos los días en un negocio, no para llenar menús con funcionalidades que pocas veces se utilizan.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="conviccion">No creemos que el futuro del software empresarial tenga más botones.<br>Creemos que tendrá <span style="color:var(--verde-main)">mejores conversaciones.</span></p>
   </div>
 </section>
 
