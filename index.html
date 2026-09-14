@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NODO — Tu negocio, en un mensaje.</title>
-<meta name="description" content="Registra ventas, lleva el control de fiados y gestiona tu inventario directo desde WhatsApp. Sin apps, sin papeles.">
+<meta name="description" content="Sincroniza tus ventas, caja, pagos e inventario de tu punto de venta. Vende, cobra y controla tu negocio desde WhatsApp.">
 <meta property="og:title" content="NODO — Tu negocio, en un mensaje.">
-<meta property="og:description" content="El asistente financiero para micronegocios que vive en WhatsApp.">
+<meta property="og:description" content="Sincroniza tus ventas, caja, pagos e inventario de tu punto de venta. Vende, cobra y controla tu negocio desde WhatsApp.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -273,6 +273,16 @@ nav{
   padding:9px 13px;
   font-size:12.5px;color:#555;font-style:italic;line-height:1.5;
 }
+.flujo-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:2px;background:var(--borde);
+  border-radius:16px;overflow:hidden;border:1px solid var(--borde);
+  margin-top:24px;
+}
+.flujo-item{background:#fff;padding:28px 22px}
+.flujo-label{font-size:12px;font-weight:800;color:var(--verde-main);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+.flujo-item h4{font-size:15px;font-weight:800;margin-bottom:8px;line-height:1.35}
+.flujo-item p{font-size:13.5px;color:var(--gris-txt);line-height:1.6}
 
 /* ── Pasos ── */
 .pasos-grid{
@@ -294,6 +304,31 @@ nav{
 }
 .paso h3{font-size:16px;font-weight:800;color:#fff;margin-bottom:8px}
 .paso p{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6}
+
+/* ── Así funciona (ampliado) ── */
+.registra-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-bottom:32px}
+.registra-num{font-size:12px;font-weight:800;color:var(--verde-main);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.registra-item h4{font-size:15px;font-weight:800;margin-bottom:8px;line-height:1.35}
+.registra-item p{font-size:13.5px;color:var(--gris-txt);line-height:1.65}
+.pos-badges{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.pos-badge{background:#555;color:#fff;font-size:13px;font-weight:500;padding:12px 20px;border-radius:8px;max-width:320px;text-align:center;line-height:1.5}
+.pos-badge strong{font-weight:800}
+
+/* ── Roles ── */
+.roles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.role-card{background:#fff;border:1.5px solid var(--borde);border-radius:14px;padding:26px}
+.role-tag{font-size:12px;color:var(--verde-main);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.role-card h4{font-size:18px;font-weight:800;margin-bottom:8px}
+.role-card p{font-size:14px;color:var(--gris-txt);line-height:1.6}
+
+/* ── Canales ── */
+.canales-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:24px}
+.canal-chip{
+  border-radius:20px;padding:9px 18px;font-size:14px;font-weight:600;
+  border:1.5px solid var(--verde-main);color:var(--verde-main);background:var(--verde-lt);
+}
+.canal-chip.proximo{border:1.5px dashed var(--borde);color:#999;background:transparent;font-weight:500}
+.canal-arrow{color:#bbb;font-size:15px}
 
 /* ── Nosotros ── */
 .nosotros-lead{max-width:720px;margin:0 auto 8px}
@@ -426,7 +461,11 @@ footer{
   .phone-wrap{display:none}
   .problema-inner{grid-template-columns:1fr}
   .feat-grid{grid-template-columns:1fr}
+  .flujo-grid{grid-template-columns:1fr}
   .pasos-grid{grid-template-columns:1fr}
+  .registra-grid{grid-template-columns:1fr}
+  .roles-grid{grid-template-columns:1fr}
+  .canales-row{flex-wrap:wrap}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .testis{grid-template-columns:1fr}
   .precios-grid{grid-template-columns:1fr;max-width:360px}
@@ -450,6 +489,7 @@ footer{
     <ul class="nav-links">
       <li><a href="#funciones">Funciones</a></li>
       <li><a href="#como">Cómo funciona</a></li>
+      <li><a href="#roles">Roles</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#precios">Precios</a></li>
     </ul>
@@ -470,7 +510,7 @@ footer{
         </div>
       </div>
       <h1>Lleva el control<br>de tu negocio<br>desde <em>WhatsApp.</em></h1>
-      <p class="hero-desc">Registra ventas, fiados e inventario directo desde WhatsApp. Sin apps, sin papeles, sin complicaciones.</p>
+      <p class="hero-desc">Sincroniza tus ventas, caja, pagos e inventario de tu punto de venta. Tu equipo registra, consulta y gestiona el negocio desde WhatsApp, sin cambiar la forma en que trabajan.</p>
       <div class="hero-ctas">
         <a href="https://wa.me/573115633264?text=Hola" class="btn-wsp" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -481,15 +521,7 @@ footer{
       <div class="hero-checks">
         <span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          14 días gratis
-        </span>
-        <span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          Sin descargar nada
-        </span>
-        <span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          En español colombiano
+          45 días gratis
         </span>
       </div>
     </div>
@@ -509,37 +541,36 @@ footer{
 
           <div class="bn">
             <div class="bn-name">NODO</div>
-            ¡Hola! Soy NODO, el asistente de tu negocio por WhatsApp. ¡Es muy fácil!
+            ¡Hola! Soy NODO. Te ayudo a llevar el control de tu negocio desde WhatsApp.
             <div class="bt">10:41</div>
           </div>
 
           <div class="bu">
-            Vendi 5 metros de tela morada a 25.000 a María López, quedó a fiado.
+            Vendí 5 camisetas moradas de $25.000 a María López. Me paga por Nequi.
             <div class="bt">10:42 <span class="bck">✓✓</span></div>
           </div>
 
           <div class="bn">
             <div class="bn-name">NODO</div>
             <span class="bb">🧾 Venta registrada</span><br>
-            Producto: Tela morada<br>
-            Cantidad: 5 metros<br>
+            Camiseta morada · 5 unidades<br>
             Total: <span class="bg">$125.000</span><br>
             Cliente: María López<br>
-            Tipo: <span class="bb">A FIADO</span>
+            Pago: <span class="bb">Nequi</span><br>
+            Inventario actualizado: ✓
             <div class="bt">10:42</div>
           </div>
 
           <div class="bu">
-            ¿Qué telas tengo en stock?
+            ¿Cómo está mi inventario?
             <div class="bt">10:43 <span class="bck">✓✓</span></div>
           </div>
 
           <div class="bn">
             <div class="bn-name">NODO</div>
-            <span class="bb">📦 Inventario de telas</span><br>
-            Tela morada: <span class="bg">170 metros</span><br>
-            Tela jean: <span class="bg">115 metros</span><br>
-            Poliéster: <span class="bg">48 kilos</span>
+            <span class="bb">📦 Inventario actualizado</span><br>
+            Camiseta morada: <span class="bg">165 unidades</span><br>
+            Jeans: <span class="bg">115 unidades</span>
             <div class="bt">10:43</div>
           </div>
         </div>
@@ -567,11 +598,12 @@ footer{
         <div class="preg">¿Cuánto me debe Kelly en total?</div>
         <div class="preg">¿Qué referencias se me están agotando?</div>
         <div class="preg">¿Cuánto recibí en Nequi este mes?</div>
+        <p style="font-size:16px;font-weight:700;color:var(--negro);margin-top:8px">Nodo conecta todo.<br>Una sola capa conversacional para operar el negocio.</p>
       </div>
       <div>
         <div class="eyebrow">El problema</div>
-        <h2 class="sec-title">Si no sabes la respuesta de inmediato,<br><span style="color:var(--verde-main)">NODO es para ti.</span></h2>
-        <p class="sec-sub" style="margin-top:14px">Los dueños de negocio colombianos pierden tiempo y plata por no llevar el control de su negocio. No porque no quieran, sino porque ninguna herramienta se adapta a cómo trabajan realmente.</p>
+        <h2 class="sec-title">Hoy la operación está fragmentada.</h2>
+        <p class="sec-sub" style="margin-top:14px">El vendedor vende. El POS registra. Caja recibe el pago. El dueño revisa. El inventario se actualiza después. Y buena parte de la información termina dispersa entre sistemas, papeles y conversaciones.</p>
       </div>
     </div>
   </div>
@@ -610,6 +642,29 @@ footer{
         <div class="feat-ej">"Cómo me fue hoy" → resumen completo al instante</div>
       </div>
     </div>
+
+    <div class="flujo-grid">
+      <div class="flujo-item">
+        <div class="flujo-label">Vende</div>
+        <h4>Registra la venta una sola vez.</h4>
+        <p>Nodo lleva la venta desde el vendedor hasta el siguiente paso de la operación.</p>
+      </div>
+      <div class="flujo-item">
+        <div class="flujo-label">Cobra</div>
+        <h4>Cada venta tiene un pago.</h4>
+        <p>Bre-B, efectivo o tarjeta. Nodo identifica cómo se paga y conecta el pago con la operación.</p>
+      </div>
+      <div class="flujo-item">
+        <div class="flujo-label">Actualiza</div>
+        <h4>El inventario se mueve con cada venta.</h4>
+        <p>Entradas, salidas, ajustes y cargas masivas. Tu inventario deja de quedar atrás.</p>
+      </div>
+      <div class="flujo-item">
+        <div class="flujo-label">Controla</div>
+        <h4>Todo lo que pasa en el negocio queda conectado.</h4>
+        <p>Qué se vendió, cuánto hay, qué se pagó y qué está pasando en el punto de venta.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -636,6 +691,88 @@ footer{
         <h3>Todo queda organizado</h3>
         <p>La venta, el fiado o el inventario quedan registrados. El resumen del día está listo cuando lo pidas.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASÍ FUNCIONA (AMPLIADO) -->
+<section class="sec">
+  <div class="container">
+    <div class="sec-hdr" style="text-align:center;margin-bottom:40px">
+      <h2 class="sec-title">Así funciona Nodo</h2>
+      <p class="sec-sub" style="margin:0 auto;max-width:560px">Tu equipo habla. Nodo conecta la operación.</p>
+    </div>
+    <div class="registra-grid">
+      <div class="registra-item">
+        <div class="registra-num">01 — Registra</div>
+        <h4>Habla como ya trabajas.</h4>
+        <p>El vendedor registra una venta. "Vendí 12 camisetas a $35.000." Nodo entiende la operación y la convierte en datos estructurados.</p>
+      </div>
+      <div class="registra-item">
+        <div class="registra-num">02 — Conecta</div>
+        <h4>Una acción actualiza todo lo que corresponde.</h4>
+        <p>La venta queda registrada, el pago sigue su flujo y el inventario se actualiza. Venta: $420.000 · Pago: Bre-B · Inventario: 48 → 36 pantalones. Sin volver a registrar la misma información.</p>
+      </div>
+      <div class="registra-item">
+        <div class="registra-num">03 — Controla</div>
+        <h4>Cada persona ve lo que necesita.</h4>
+        <p>El vendedor consulta sus ventas. Caja recibe las operaciones pendientes. El dueño ve el negocio completo. "¿Cómo vamos hoy?" Nodo responde con la información de toda la operación.</p>
+      </div>
+      <div class="registra-item">
+        <div class="registra-num">04 — Decide</div>
+        <h4>Deja de operar a ciegas.</h4>
+        <p>Ventas, pagos, caja e inventario se convierten en información para saber qué está pasando y qué hacer después. "¿Qué productos debo surtir?"</p>
+      </div>
+    </div>
+    <div class="pos-badges">
+      <div class="pos-badge"><strong>Si ya tienes POS,</strong> Nodo se conecta.</div>
+      <div class="pos-badge"><strong>Si no tienes POS,</strong> Nodo te permite comenzar con un flujo simple.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLES -->
+<section class="sec sec-alt" id="roles">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="eyebrow">Roles</div>
+      <h2 class="sec-title">Cada persona ve lo que necesita</h2>
+      <p class="sec-sub" style="margin-top:10px">Y una conversación para cada uno.</p>
+    </div>
+    <div class="roles-grid">
+      <div class="role-card">
+        <div class="role-tag">Vendedor</div>
+        <h4>Vende y consulta</h4>
+        <p>Registra ventas, consulta inventario y revisa sus propias ventas.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag">Caja</div>
+        <h4>Recibe y continúa</h4>
+        <p>Recibe los tickets de pago y continúa las ventas en efectivo o tarjeta.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag">Dueño / Administrador</div>
+        <h4>Controla todo</h4>
+        <p>Tiene una visión completa del negocio: ventas, vendedores, caja, pagos e inventario.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CANALES -->
+<section class="sec">
+  <div class="container">
+    <div class="eyebrow">Un solo lugar para toda tu operación</div>
+    <p class="sec-sub" style="max-width:620px">Hoy empezamos por tu punto físico. Mañana, Nodo podrá conectar también los canales digitales donde vendes.</p>
+    <div class="canales-row">
+      <div class="canal-chip">Punto físico</div>
+      <div class="canal-chip">WhatsApp</div>
+      <span class="canal-arrow">→</span>
+      <div class="canal-chip proximo">Ecommerce</div>
+      <span class="canal-arrow">→</span>
+      <div class="canal-chip proximo">Redes sociales</div>
+      <span class="canal-arrow">→</span>
+      <div class="canal-chip proximo">Otros canales</div>
     </div>
   </div>
 </section>
@@ -708,28 +845,15 @@ footer{
   <div class="container" style="text-align:center">
     <div class="eyebrow">Precios</div>
     <h2 class="sec-title">Simple y sin sorpresas</h2>
-    <p class="sec-sub" style="margin:10px auto 0">14 días sin costo. Luego, solo $38.500 pesos mensuales.</p>
-    <div class="precios-grid">
-      <div class="precio">
-        <div class="plan-name">Gratuito</div>
-        <div class="plan-price"><sup>$</sup>0</div>
-        <div class="plan-per">14 días de prueba</div>
-        <ul class="plan-feats">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Registro de ventas</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Control de fiados</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Resumen del día</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Hasta 50 ventas/semana</li>
-        </ul>
-        <a href="https://wa.me/573115633264?text=Hola" class="plan-cta outline" target="_blank" rel="noopener">Pruébalo gratis</a>
-      </div>
+    <p class="sec-sub" style="margin:10px auto 0">45 días sin costo. Luego, solo $38.500 pesos mensuales.</p>
+    <div class="precios-grid" style="grid-template-columns:1fr;max-width:360px">
       <div class="precio feat-p">
-        <div class="badge-p">Más popular</div>
-        <div class="plan-name">Pago</div>
+        <div class="plan-name">Plan Nodo</div>
         <div class="plan-price"><sup>$</sup>38.500</div>
-        <div class="plan-per">por mes</div>
+        <div class="plan-per">por mes · 45 días de prueba gratis</div>
         <ul class="plan-feats">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Todo lo del plan gratuito</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Registra tus ventas sin limite</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Registra tus ventas sin límite</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Control de fiados</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Gestiona tu inventario en tiempo real</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Recibe reportes diarios, semanales y mensuales</li>
         </ul>
@@ -742,13 +866,13 @@ footer{
 <!-- CTA FINAL -->
 <section class="cta-sec">
   <div class="container">
-    <h2>Pruébalo.<br><em>14 días sin costo.</em></h2>
-    <p>Sin tarjeta de crédito. Sin instalaciones. Solo WhatsApp.</p>
+    <h2>Tu negocio,<br><em>en un mensaje.</em></h2>
+    <p>Vende, cobra y controla tu negocio desde WhatsApp.</p>
     <a href="https://wa.me/573115633264?text=Hola" class="btn-wsp" style="margin:0 auto;font-size:16px;padding:15px 28px" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       ¡Solicita tu prueba gratis!
     </a>
-    <p class="cta-note">Tu negocio, en un mensaje</p>
+    <p class="cta-note">45 días de prueba. Sin instalaciones.</p>
   </div>
 </section>
 
