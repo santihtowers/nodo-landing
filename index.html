@@ -277,7 +277,6 @@ nav{
   display:grid;grid-template-columns:repeat(4,1fr);
   gap:2px;background:var(--borde);
   border-radius:16px;overflow:hidden;border:1px solid var(--borde);
-  margin-top:24px;
 }
 .flujo-item{background:#fff;padding:28px 22px}
 .flujo-label{font-size:12px;font-weight:800;color:var(--verde-main);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
@@ -286,7 +285,7 @@ nav{
 
 /* ── Pasos ── */
 .pasos-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
+  display:grid;grid-template-columns:repeat(4,1fr);
   gap:2px;background:rgba(255,255,255,.12);
   border-radius:16px;overflow:hidden;
   border:1px solid rgba(255,255,255,.12);
@@ -306,12 +305,8 @@ nav{
 .paso p{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6}
 
 /* ── Así funciona (ampliado) ── */
-.registra-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-bottom:32px}
-.registra-num{font-size:12px;font-weight:800;color:var(--verde-main);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
-.registra-item h4{font-size:15px;font-weight:800;margin-bottom:8px;line-height:1.35}
-.registra-item p{font-size:13.5px;color:var(--gris-txt);line-height:1.65}
-.pos-badges{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px}
-.pos-badge{background:#555;color:#fff;font-size:13px;font-weight:500;padding:12px 20px;border-radius:8px;max-width:320px;text-align:center;line-height:1.5}
+.pos-badges{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:32px}
+.pos-badge{background:var(--verde-main);color:#fff;font-size:13px;font-weight:500;padding:12px 20px;border-radius:8px;max-width:320px;text-align:center;line-height:1.5}
 .pos-badge strong{font-weight:800}
 
 /* ── Roles ── */
@@ -463,7 +458,6 @@ footer{
   .feat-grid{grid-template-columns:1fr}
   .flujo-grid{grid-template-columns:1fr}
   .pasos-grid{grid-template-columns:1fr}
-  .registra-grid{grid-template-columns:1fr}
   .roles-grid{grid-template-columns:1fr}
   .canales-row{flex-wrap:wrap}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
@@ -592,19 +586,11 @@ footer{
 <!-- PROBLEMA -->
 <section class="sec">
   <div class="container">
-    <div class="problema-inner">
-      <div class="preguntas">
-        <div class="preg">¿Cuánto vendí exactamente la semana pasada?</div>
-        <div class="preg">¿Cuánto me debe Kelly en total?</div>
-        <div class="preg">¿Qué referencias se me están agotando?</div>
-        <div class="preg">¿Cuánto recibí en Nequi este mes?</div>
-        <p style="font-size:16px;font-weight:700;color:var(--negro);margin-top:8px">Nodo conecta todo.<br>Una sola capa conversacional para operar el negocio.</p>
-      </div>
-      <div>
-        <div class="eyebrow">El problema</div>
-        <h2 class="sec-title">Hoy la operación está fragmentada.</h2>
-        <p class="sec-sub" style="margin-top:14px">El vendedor vende. El POS registra. Caja recibe el pago. El dueño revisa. El inventario se actualiza después. Y buena parte de la información termina dispersa entre sistemas, papeles y conversaciones.</p>
-      </div>
+    <div style="max-width:640px;margin:0 auto;text-align:center">
+      <div class="eyebrow">El problema</div>
+      <h2 class="sec-title">Hoy la operación está fragmentada.</h2>
+      <p class="sec-sub" style="margin:14px auto 0">El vendedor vende. El POS registra. Caja recibe el pago. El dueño revisa. El inventario se actualiza después. Y buena parte de la información termina dispersa entre sistemas, papeles y conversaciones.</p>
+      <p style="font-size:16px;color:var(--negro);margin-top:18px">Nodo conecta todo. Una sola capa conversacional para operar el negocio.</p>
     </div>
   </div>
 </section>
@@ -616,33 +602,6 @@ footer{
       <div class="eyebrow">Funciones</div>
       <h2 class="sec-title">Todo lo que necesitas,<br>en un mensaje de WhatsApp</h2>
     </div>
-    <div class="feat-grid">
-      <div class="feat">
-        <div class="feat-ico">🎙️</div>
-        <h3>Registro de ventas</h3>
-        <p>Escribe o graba un audio y NODO registra la venta al instante, con producto, cantidad, precio y método de pago.</p>
-        <div class="feat-ej">"Vendí 24 kilos de poliéster a 17.000 por Nequi"</div>
-      </div>
-      <div class="feat">
-        <div class="feat-ico">💳</div>
-        <h3>Control de fiados</h3>
-        <p>Registra deudas, abonos y pagos totales. NODO sabe cuánto le debe cada cliente y reparte los pagos automáticamente.</p>
-        <div class="feat-ej">"Kelly me pagó todo" → saldo en cero en todas sus deudas</div>
-      </div>
-      <div class="feat">
-        <div class="feat-ico">📦</div>
-        <h3>Inventario</h3>
-        <p>Stock en metros y kilos con conversión automática. Alertas de productos por agotarse y referencias sin movimiento.</p>
-        <div class="feat-ej">"Cuánto tengo de tela jean" → 115 metros ≈ 46 kilos</div>
-      </div>
-      <div class="feat">
-        <div class="feat-ico">📊</div>
-        <h3>Resumen del día</h3>
-        <p>Ventas por método de pago, fiados nuevos y recuperados, inventario actual y total por cobrar, todo en un mensaje.</p>
-        <div class="feat-ej">"Cómo me fue hoy" → resumen completo al instante</div>
-      </div>
-    </div>
-
     <div class="flujo-grid">
       <div class="flujo-item">
         <div class="flujo-label">Vende</div>
@@ -668,60 +627,34 @@ footer{
   </div>
 </section>
 
-<!-- COMO FUNCIONA -->
+<!-- ASÍ FUNCIONA (AMPLIADO) -->
 <section class="sec sec-verde" id="como">
   <div class="container">
     <div style="text-align:center">
       <div class="eyebrow eyebrow-white">Cómo funciona</div>
-      <h2 class="sec-title sec-title-white">Tres pasos, sin instalar nada</h2>
+      <h2 class="sec-title sec-title-white">Así funciona Nodo</h2>
+      <p class="sec-sub-white" style="margin:0 auto">Tu equipo habla. Nodo conecta la operación.</p>
     </div>
     <div class="pasos-grid">
       <div class="paso">
         <div class="paso-num">1</div>
-        <h3>Escribe o habla</h3>
-        <p>Cuéntale a NODO lo que pasó en tu negocio, como le hablarías a un amigo. Texto o nota de voz, en español colombiano.</p>
+        <h3>Registra</h3>
+        <p>Habla como ya trabajas. El vendedor registra la venta como le hablaría a un amigo, y Nodo la convierte en datos estructurados.</p>
       </div>
       <div class="paso">
         <div class="paso-num">2</div>
-        <h3>NODO entiende</h3>
-        <p>El sistema interpreta tu mensaje y extrae la información. Entiende "25 mil", "25 lucas" o "25.000" — como tú hablas.</p>
+        <h3>Conecta</h3>
+        <p>Una acción actualiza todo lo que corresponde: la venta queda registrada, el pago sigue su flujo y el inventario se actualiza. Sin volver a registrar la misma información.</p>
       </div>
       <div class="paso">
         <div class="paso-num">3</div>
-        <h3>Todo queda organizado</h3>
-        <p>La venta, el fiado o el inventario quedan registrados. El resumen del día está listo cuando lo pidas.</p>
+        <h3>Controla</h3>
+        <p>Cada persona ve lo que necesita: el vendedor sus ventas, caja las operaciones pendientes y el dueño el negocio completo.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ASÍ FUNCIONA (AMPLIADO) -->
-<section class="sec">
-  <div class="container">
-    <div class="sec-hdr" style="text-align:center;margin-bottom:40px">
-      <h2 class="sec-title">Así funciona Nodo</h2>
-      <p class="sec-sub" style="margin:0 auto;max-width:560px">Tu equipo habla. Nodo conecta la operación.</p>
-    </div>
-    <div class="registra-grid">
-      <div class="registra-item">
-        <div class="registra-num">01 — Registra</div>
-        <h4>Habla como ya trabajas.</h4>
-        <p>El vendedor registra una venta. "Vendí 12 camisetas a $35.000." Nodo entiende la operación y la convierte en datos estructurados.</p>
-      </div>
-      <div class="registra-item">
-        <div class="registra-num">02 — Conecta</div>
-        <h4>Una acción actualiza todo lo que corresponde.</h4>
-        <p>La venta queda registrada, el pago sigue su flujo y el inventario se actualiza. Venta: $420.000 · Pago: Bre-B · Inventario: 48 → 36 pantalones. Sin volver a registrar la misma información.</p>
-      </div>
-      <div class="registra-item">
-        <div class="registra-num">03 — Controla</div>
-        <h4>Cada persona ve lo que necesita.</h4>
-        <p>El vendedor consulta sus ventas. Caja recibe las operaciones pendientes. El dueño ve el negocio completo. "¿Cómo vamos hoy?" Nodo responde con la información de toda la operación.</p>
-      </div>
-      <div class="registra-item">
-        <div class="registra-num">04 — Decide</div>
-        <h4>Deja de operar a ciegas.</h4>
-        <p>Ventas, pagos, caja e inventario se convierten en información para saber qué está pasando y qué hacer después. "¿Qué productos debo surtir?"</p>
+      <div class="paso">
+        <div class="paso-num">4</div>
+        <h3>Decide</h3>
+        <p>Deja de operar a ciegas. Ventas, pagos, caja e inventario se convierten en información para saber qué está pasando y qué hacer después.</p>
       </div>
     </div>
     <div class="pos-badges">
