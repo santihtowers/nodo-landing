@@ -28,7 +28,7 @@
     if(!document.getElementById('ck-css')){var s=document.createElement('style');s.id='ck-css';s.textContent=css;document.head.appendChild(s)}
     var cur=get(),b=document.createElement('div');b.id='ck';if(cfg)b.className='cfg';
     b.setAttribute('role','dialog');b.setAttribute('aria-labelledby','ckT');
-    b.innerHTML='<p><b>Usamos cookies.</b> Técnicas para que el sitio funcione y, si lo autorizas, analíticas. <a href="privacidad.html#s10">Más info</a></p>'
+    b.innerHTML='<p><b>Usamos cookies.</b> Técnicas para que el sitio funcione y, si lo autorizas, analíticas. <a href="privacidad#s10">Más info</a></p>'
     +'<div class="ck-opt"><label><input type="checkbox" checked disabled><span><b>Necesarias</b><small>Siempre activas.</small></span></label>'
     +'<label><input type="checkbox" id="ckAn"'+(cur&&cur.analiticas?' checked':'')+'><span><b>Analíticas</b><small>Miden el uso del sitio de forma agregada.</small></span></label></div>'
     +'<div class="ck-row"><button type="button" class="p" id="ckOk">Aceptar</button><button type="button" id="ckNo">Rechazar</button><button type="button" class="l" id="ckCfg">'+(cfg?'Guardar':'Configurar')+'</button></div>';
