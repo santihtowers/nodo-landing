@@ -4,57 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Términos y Condiciones — NODO</title>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="description" content="Términos y condiciones de uso de Nodo.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --verde-hdr:#1A5C3A;--verde-main:#2B7A4B;
-  --negro:#0D0D0D;--gris:#555;--gris-lt:#F5F5F5;
-  --borde:#E0E0E0;--blanco:#FFFFFF;
-  --f:'Inter',sans-serif;
-}
-body{font-family:var(--f);color:var(--negro);background:var(--blanco);line-height:1.6;font-size:16px}
-nav{background:var(--verde-hdr);padding:0 24px}
-.nav-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
-.nav-logo{font-size:20px;font-weight:900;color:#fff;text-decoration:none}
-.nav-back{font-size:13px;color:rgba(255,255,255,.75);text-decoration:none;display:flex;align-items:center;gap:5px}
-.nav-back:hover{color:#fff}
-.hero{background:var(--verde-hdr);padding:40px 24px 48px;text-align:center}
-.hero h1{font-size:32px;font-weight:900;color:#fff;letter-spacing:-.5px;margin-bottom:8px}
-.hero p{font-size:14px;color:rgba(255,255,255,.6)}
-.content{max-width:760px;margin:0 auto;padding:48px 24px 80px}
-.art{margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--borde)}
-.art:last-child{border-bottom:none}
-.art-num{font-size:11px;font-weight:700;color:var(--verde-main);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
-.art h2{font-size:18px;font-weight:800;margin-bottom:12px;letter-spacing:-.2px}
-.art p{font-size:15px;color:#333;line-height:1.75;margin-bottom:10px}
-.art ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:10px}
-.art ul li{font-size:15px;color:#333;line-height:1.65;padding-left:20px;position:relative}
-.art ul li::before{content:'·';position:absolute;left:6px;color:var(--verde-main);font-weight:700}
-.art-dest{background:var(--gris-lt);border-left:3px solid var(--verde-main);border-radius:0 8px 8px 0;padding:14px 18px;margin-top:12px;font-size:14px;color:#444;line-height:1.65}
-footer{background:var(--verde-hdr);padding:24px;text-align:center}
-footer p{font-size:13px;color:rgba(255,255,255,.5)}
-footer a{color:rgba(255,255,255,.7);text-decoration:none}
-footer a:hover{color:#fff}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="legal.css">
 </head>
 <body>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">nodo</a>
-    <a href="index.html" class="nav-back">← Volver al inicio</a>
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="logo" aria-label="Nodo, inicio"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#407558" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle class="core" cx="12" cy="12" r="3"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="4" cy="18" r="2"/><circle cx="20" cy="18" r="2"/><line x1="6" y1="6.5" x2="10" y2="11"/><line x1="18" y1="6.5" x2="14" y2="11"/><line x1="6" y1="17.5" x2="10" y2="13"/><line x1="18" y1="17.5" x2="14" y2="13"/></svg>nodo</a>
+    <div class="nav-r">
+      <a href="index.html" class="back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="11 18 5 12 11 6"/></svg>Volver al inicio</a>
+      <a class="btn" href="index.html#demo">Agenda una demo</a>
+    </div>
   </div>
-</nav>
+</header>
 
-<div class="hero">
-  <h1>Términos y Condiciones de uso</h1>
-  <p>Última actualización: 7 de julio de 2026</p>
-</div>
+<section class="lhero">
+  <canvas class="net" id="net" aria-hidden="true"></canvas>
+  <div class="w">
+    <span class="kicker"><i aria-hidden="true"></i>Legal</span>
+    <h1 id="lTitle">Términos y Condiciones de uso</h1>
+    <p>Última actualización: 7 de julio de 2026</p>
+  </div>
+</section>
 
+<main class="lbody">
 <div class="content">
 
   <div class="art">
@@ -191,7 +171,7 @@ footer a:hover{color:#fff}
       <li>Mejoramiento del producto.</li>
       <li>Cumplimiento de obligaciones legales.</li>
     </ul>
-    <p style="margin-top:12px">El tratamiento detallado se encuentra en la <a href="privacidad.html" style="color:var(--verde-main);font-weight:500">Política de Privacidad</a>.</p>
+    <p style="margin-top:12px">El tratamiento detallado se encuentra en la <a href="privacidad.html">Política de Privacidad</a>.</p>
   </div>
 
   <div class="art">
@@ -288,14 +268,27 @@ footer a:hover{color:#fff}
     <div class="art-num">Artículo 21</div>
     <h2>Contacto</h2>
     <p>Para consultas relacionadas con estos Términos y Condiciones, el usuario podrá comunicarse a través de los canales oficiales de atención de Nodo.</p>
-    <div class="art-dest">WhatsApp: <a href="https://wa.me/573115633264?text=Hola" style="color:var(--verde-main);font-weight:500">Escribir a NODO</a></div>
+    <div class="art-dest">WhatsApp: <a href="https://wa.me/573115633264" data-wa="Hola, leí los Términos y Condiciones de Nodo y tengo una consulta.">Escribir a NODO</a></div>
   </div>
 
 </div>
+</main>
 
-<footer>
-  <p>© 2026 NODO · Bogotá, Colombia · <a href="index.html">soynodo.online</a> · <a href="privacidad.html">Política de Privacidad</a></p>
+<button type="button" class="to-top" id="toTop" aria-label="Volver arriba">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 14 12 8 18 14"/></svg>
+</button>
+
+<footer class="foot">
+  <div class="w">
+    <div><span class="foot-logo">nodo</span><br>© 2026 NODO TECHNOLOGIES S.A.S. · NIT 902086914-8 · Bogotá, Colombia</div>
+    <div class="foot-links">
+      <a href="index.html">Inicio</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="terminos.html" aria-current="page">Términos</a>
+    </div>
+  </div>
 </footer>
 
+<script src="legal.js"></script>
 </body>
 </html>

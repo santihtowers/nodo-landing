@@ -4,829 +4,893 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NODO — Tu negocio, en un mensaje.</title>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=4">
 <meta name="description" content="Sincroniza tus ventas, caja, pagos e inventario de tu punto de venta. Vende, cobra y controla tu negocio desde WhatsApp.">
 <meta property="og:title" content="NODO — Tu negocio, en un mensaje.">
 <meta property="og:description" content="Sincroniza tus ventas, caja, pagos e inventario de tu punto de venta. Vende, cobra y controla tu negocio desde WhatsApp.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="hero.webp">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:72px;overflow-x:hidden}
+@supports(overflow:clip){html,body{overflow-x:clip}}
+body{margin:0}
 
 :root{
-  --verde-hdr:  #1A5C3A;
-  --verde-main: #2B7A4B;
-  --verde-btn:  #2B7A4B;
-  --verde-txt:  #2B7A4B;
-  --verde-lt:   #E8F5EE;
-  --negro:      #0D0D0D;
-  --gris-txt:   #444444;
-  --gris-lt:    #F5F5F5;
-  --borde:      #E0E0E0;
-  --blanco:     #FFFFFF;
-  --f: 'Inter', sans-serif;
+  --verde:      #407558;
+  --verde-osc:  #1F3B2C;
+  --verde-hero: 18,40,28;
+  --verde-lt:   #EEF3F0;
+  --menta:      #8FD3AE;
+  --tinta:      #1B2420;
+  --mute:       #55625B;
+  --borde:      #E3EAE5;
+  --borde-in:   #D9E1DC;
+  --suave:      #B7CBBF;
+  --fb: 'Figtree','Segoe UI',sans-serif;
+  --fh: 'Bricolage Grotesque','Segoe UI',sans-serif;
+  --ease: cubic-bezier(.2,.7,.2,1);
+  --spring: cubic-bezier(.34,1.56,.64,1);
 }
 
-body{font-family:var(--f);color:var(--negro);background:var(--blanco);line-height:1.5;font-size:16px}
+body{font-family:var(--fb);color:var(--tinta);font-size:18px;line-height:1.55;background:#fff;overflow-x:hidden}
+h1,h2,h3{font-family:var(--fh);line-height:1.06;letter-spacing:-.02em;margin:0}
+h2{font-size:46px;font-weight:800}
+p{margin:0}
+a{color:inherit}
+img{max-width:100%;display:block}
+::selection{background:var(--menta);color:var(--verde-osc)}
 
-/* ── Helpers ── */
-.container{max-width:1060px;margin:0 auto;padding:0 24px}
-.tag-pill{
-  display:inline-flex;align-items:center;gap:7px;
-  border:1.5px solid var(--verde-main);
-  color:var(--verde-main);border-radius:20px;
-  padding:5px 14px;font-size:13px;font-weight:600;
-}
-.tag-pill::before{
-  content:'';width:7px;height:7px;border-radius:50%;
-  background:var(--verde-main);
-}
+.w{max-width:1120px;margin:0 auto;padding:0 32px}
+.mute{color:var(--mute)}
+.lead{font-size:21px;max-width:440px}
+
+/* ── Botones ── */
+.btn{position:relative;overflow:hidden;isolation:isolate;display:inline-block;background:var(--verde);color:#fff;font:inherit;font-weight:700;padding:15px 28px;border-radius:12px;text-decoration:none;border:0;cursor:pointer;transition:background .2s,transform .25s var(--spring),box-shadow .25s}
+.btn::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .6s var(--ease);z-index:-1}
+.btn:hover{background:var(--verde-osc);transform:translateY(-2px);box-shadow:0 10px 24px rgba(31,59,44,.25)}
+.btn:hover::after{left:130%}
+.btn:active{transform:translateY(0) scale(.97)}
+.btn-white{background:#fff;color:var(--verde-osc);font-size:18px;padding:17px 30px}
+.btn-white::after{background:linear-gradient(100deg,transparent,rgba(64,117,88,.18),transparent)}
+.btn-white:hover{background:#fff;box-shadow:0 14px 34px rgba(0,0,0,.3)}
+.btn .arr{display:inline-block;margin-left:8px;transition:transform .25s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+
+/* ── Placeholder de imagen ── */
+.ph{position:relative;overflow:hidden;background:var(--verde-lt);border:2px dashed #9DB5A8;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px;color:#2F4A3C}
+.ph::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-100%);animation:shimmer 4.5s ease-in-out infinite}
+.ph .t{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--verde);margin-bottom:8px;font-weight:700}
+.ph .d{font-size:15px;line-height:1.45;max-width:360px;font-weight:500}
+@keyframes shimmer{0%,40%{transform:translateX(-100%)}80%,100%{transform:translateX(100%)}}
+
+/* ── Barra de progreso ── */
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:60;background:linear-gradient(90deg,var(--verde),var(--menta));transform-origin:0 50%;transform:scaleX(0)}
 
 /* ── Nav ── */
-nav{
-  background:var(--verde-hdr);
-  padding:0 24px;
-}
-.nav-inner{
-  max-width:1060px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;
-  height:64px;
-}
-.nav-logo{
-  display:flex;align-items:center;gap:10px;
-  font-size:22px;font-weight:800;color:#fff;
-  letter-spacing:-0.5px;
-}
-.nav-logo-icon{
-  width:36px;height:36px;
-  background:rgba(255,255,255,0.15);
-  border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-}
-.nav-logo-icon svg{width:20px;height:20px}
-.nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.8);text-decoration:none}
-.nav-links a:hover{color:#fff}
-.nav-cta{
-  display:flex;align-items:center;gap:8px;
-  background:#fff;color:var(--verde-hdr);
-  border:none;border-radius:8px;
-  padding:9px 18px;font-size:14px;font-weight:700;
-  font-family:var(--f);cursor:pointer;text-decoration:none;
-  transition:opacity .15s;
-}
-.nav-cta:hover{opacity:.9}
-.nav-cta svg{width:16px;height:16px;flex-shrink:0}
+.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--borde);transition:transform .35s var(--ease),box-shadow .3s}
+.nav.scrolled{box-shadow:0 6px 24px rgba(31,59,44,.08)}
+.nav.hide{transform:translateY(-100%)}
+.js .nav{animation:navIn .7s var(--ease) both}
+@keyframes navIn{from{transform:translateY(-100%);opacity:0}}
+.nav-in{height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--fh);font-weight:800;font-size:25px;color:var(--verde-osc);text-decoration:none}
+.logo-tile{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:#1D5C3A}
+.logo-ico{transition:transform .6s var(--spring)}
+.logo:hover .logo-ico{transform:rotate(90deg) scale(1.08)}
+.logo-ico line{stroke-dasharray:8;stroke-dashoffset:8;animation:draw .6s var(--ease) forwards}
+.logo-ico line:nth-of-type(2){animation-delay:.1s}.logo-ico line:nth-of-type(3){animation-delay:.2s}.logo-ico line:nth-of-type(4){animation-delay:.3s}
+.logo-ico .core{transform-origin:12px 12px;animation:core 2.8s ease-in-out infinite}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes core{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+.nav-links{display:flex;gap:30px;font-size:15px;font-weight:600;color:var(--mute)}
+.nav-links a{position:relative;text-decoration:none;padding:6px 0;transition:color .2s}
+.nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;background:var(--verde);transform:scaleX(0);transition:transform .3s var(--ease)}
+.nav-links a:hover,.nav-links a.act{color:var(--verde-osc)}
+.nav-links a:hover::after,.nav-links a.act::after{transform:scaleX(1)}
+.nav-acts{display:flex;align-items:center;gap:10px}
+.btn-ghost{color:var(--verde-osc);font-weight:700;font-size:15px;text-decoration:none;border:1.5px solid var(--borde-in);border-radius:12px;padding:9px 16px;transition:border-color .2s,background .2s,transform .25s var(--spring)}
+.btn-ghost:hover{border-color:var(--verde);background:var(--verde-lt);transform:translateY(-2px)}
+.nav .btn{padding:10px 20px;font-size:15px}
+.menu-btn{display:none;width:44px;height:44px;border:1.5px solid var(--borde-in);border-radius:12px;background:#fff;align-items:center;justify-content:center;padding:0;cursor:pointer}
+.menu-btn line{transition:transform .3s var(--ease),opacity .2s;transform-origin:12px 12px}
+.nav.open .menu-btn line:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.nav.open .menu-btn line:nth-child(2){opacity:0}
+.nav.open .menu-btn line:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+.menu-mob{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease)}
+.menu-mob>div{overflow:hidden;display:flex;flex-direction:column;padding:0 20px}
+.menu-mob a{padding:12px 0;font-weight:600;text-decoration:none;color:var(--verde-osc);border-bottom:1px solid var(--borde);opacity:0;transform:translateX(-12px);transition:opacity .3s,transform .3s var(--ease)}
+.menu-mob a:last-child{border-bottom:0;margin-bottom:12px}
+.nav.open .menu-mob{grid-template-rows:1fr;border-top:1px solid var(--borde)}
+.nav.open .menu-mob a{opacity:1;transform:none}
+.nav.open .menu-mob a:nth-child(2){transition-delay:.05s}.nav.open .menu-mob a:nth-child(3){transition-delay:.1s}.nav.open .menu-mob a:nth-child(4){transition-delay:.15s}.nav.open .menu-mob a:nth-child(5){transition-delay:.2s}
 
 /* ── Hero ── */
-.hero{
-  background:var(--verde-hdr);
-  padding:64px 24px 72px;
-}
-.hero-inner{
-  max-width:1060px;margin:0 auto;
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:56px;align-items:center;
-}
-.hero-tag{margin-bottom:20px}
-.hero h1{
-  font-size:clamp(38px,5vw,56px);
-  font-weight:900;
-  line-height:1.05;
-  letter-spacing:-1.5px;
-  color:#fff;
-  margin-bottom:20px;
-}
-.hero h1 em{
-  font-style:normal;
-  color:#5DCEA0;
-}
-.hero-desc{
-  font-size:17px;color:rgba(255,255,255,.75);
-  line-height:1.65;margin-bottom:32px;
-  max-width:420px;
-}
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
-.btn-wsp{
-  display:inline-flex;align-items:center;gap:9px;
-  background:#fff;color:var(--verde-hdr);
-  border:none;border-radius:8px;
-  padding:14px 24px;font-size:15px;font-weight:700;
-  font-family:var(--f);cursor:pointer;text-decoration:none;
-  transition:opacity .15s;
-}
-.btn-wsp:hover{opacity:.92}
-.btn-wsp svg{width:19px;height:19px;flex-shrink:0}
-.btn-outline{
-  display:inline-flex;align-items:center;gap:8px;
-  background:transparent;color:#fff;
-  border:1.5px solid rgba(255,255,255,.4);border-radius:8px;
-  padding:14px 24px;font-size:15px;font-weight:500;
-  font-family:var(--f);cursor:pointer;text-decoration:none;
-  transition:border-color .15s;
-}
-.btn-outline:hover{border-color:rgba(255,255,255,.8)}
-.hero-checks{
-  display:flex;gap:20px;flex-wrap:wrap;
-  font-size:13px;color:rgba(255,255,255,.65);font-weight:500;
-}
-.hero-checks span{display:flex;align-items:center;gap:5px}
-.hero-checks svg{width:14px;height:14px;color:#5DCEA0;flex-shrink:0}
+.hero{position:relative;height:720px;overflow:hidden;background:rgb(var(--verde-hero))}
+.hero-media{position:absolute;inset:-40px 0 -40px 38%;will-change:transform;-webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.04) 5%,rgba(0,0,0,.14) 10%,rgba(0,0,0,.3) 15%,rgba(0,0,0,.5) 20%,rgba(0,0,0,.7) 25%,rgba(0,0,0,.86) 30%,rgba(0,0,0,.96) 35%,#000 40%);mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.04) 5%,rgba(0,0,0,.14) 10%,rgba(0,0,0,.3) 15%,rgba(0,0,0,.5) 20%,rgba(0,0,0,.7) 25%,rgba(0,0,0,.86) 30%,rgba(0,0,0,.96) 35%,#000 40%)}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.js .hero-media img{animation:kb 2.6s var(--ease) both,drift 22s ease-in-out 2.6s infinite alternate}
+@keyframes kb{from{transform:scale(1.14);filter:blur(6px)}to{transform:scale(1);filter:none}}
+@keyframes drift{from{transform:scale(1)}to{transform:scale(1.07) translateX(-1.5%)}}
+.hero::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(var(--verde-hero),0) 60%,rgba(var(--verde-hero),.12) 100%)}
+.hero .w{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:center}
+.hero h1{font-size:76px;font-weight:800;color:#fff;max-width:520px;margin-bottom:22px}
+.hero h1 .wd{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.hero h1 .wd>span{display:inline-block;animation:wordUp .9s var(--ease) both;animation-delay:calc(.35s + var(--i)*90ms)}
+.hero h1 .wd.hl>span{color:var(--menta)}
+@keyframes wordUp{from{transform:translateY(105%);opacity:0}}
+.hero p{font-size:21px;color:#DCE8E0;max-width:460px;margin-bottom:34px}
+.js .hero .up{animation:fadeUp .9s var(--ease) both}
+.js .hero p.up{animation-delay:.95s}
+.js .hero .cta.up{animation-delay:1.1s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}}
+.js @keyframes ping{0%{box-shadow:0 0 0 0 rgba(143,211,174,.7)}80%,100%{box-shadow:0 0 0 8px rgba(143,211,174,0)}}
+
+
+/* ── Secciones ── */
+.sec{padding:110px 0}
+.sec-lt{background:var(--verde-lt);padding:100px 0;position:relative;overflow:hidden}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+
+/* ── Revelado al hacer scroll ── */
+.js .rv{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--d,0)*110ms)}
+.js .rv.rv-l{transform:translateX(-48px)}
+.js .rv.rv-r{transform:translateX(48px)}
+.js .rv.rv-s{transform:scale(.9)}
+.js .rv.in{opacity:1;transform:none}
 
 /* ── Teléfono ── */
-.phone-wrap{display:flex;justify-content:center}
-.phone{
-  background:#1a1a2e;
-  border-radius:40px;
-  padding:14px 10px 20px;
-  width:265px;
-  box-shadow:0 32px 80px rgba(0,0,0,.4),0 0 0 8px rgba(255,255,255,.08);
-}
-.phone-notch{
-  width:80px;height:5px;background:#333;
-  border-radius:3px;margin:0 auto 14px;
-}
-.chat-hdr{
-  background:var(--verde-hdr);
-  border-radius:16px 16px 0 0;
-  padding:10px 12px;
-  display:flex;align-items:center;gap:9px;
-}
-.chat-av{
-  width:34px;height:34px;background:#5DCEA0;
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:13px;font-weight:800;color:var(--verde-hdr);flex-shrink:0;
-}
-.chat-hdr-name{color:#fff;font-size:12.5px;font-weight:700}
-.chat-hdr-status{color:#A8D8C0;font-size:10.5px}
-.chat-body{
-  background:#E5DDD5;
-  padding:12px 8px 14px;
-  display:flex;flex-direction:column;gap:7px;
-  border-radius:0 0 16px 16px;
-}
-.chat-date{text-align:center}
-.chat-date span{
-  background:rgba(255,255,255,.78);
-  color:#666;font-size:10px;
-  padding:2px 10px;border-radius:8px;display:inline-block;
-}
-.bu,.bn{
-  max-width:195px;border-radius:12px;
-  padding:7px 10px;font-size:11px;line-height:1.45;
-}
-.bu{
-  align-self:flex-end;
-  background:#DCF8C6;color:#111;
-  border-bottom-right-radius:2px;
-}
-.bn{
-  align-self:flex-start;
-  background:#fff;color:#111;
-  border-bottom-left-radius:2px;
-}
-.bn-name{font-size:10px;font-weight:700;color:var(--verde-main);margin-bottom:2px}
-.bt{font-size:9px;color:#aaa;text-align:right;margin-top:2px}
-.bck{color:#53BDEB}
-.bb{font-weight:700}
-.bg{color:var(--verde-main);font-weight:700}
+.phone-box{position:relative;justify-self:center;width:320px;max-width:100%}
+.phone-box::before{content:'';position:absolute;inset:-60px -70px;background:radial-gradient(closest-side,rgba(64,117,88,.28),rgba(64,117,88,0));border-radius:50%;animation:glow 5s ease-in-out infinite}
+@keyframes glow{0%,100%{transform:scale(.92);opacity:.8}50%{transform:scale(1.08);opacity:1}}
+.phone{position:relative;background:#0F1A16;border-radius:46px;padding:11px;box-shadow:0 40px 80px rgba(20,40,30,.35),0 0 0 2px rgba(255,255,255,.08) inset;animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-14px) rotate(1deg)}}
+.phone-notch{position:absolute;top:19px;left:50%;margin-left:-44px;width:88px;height:22px;border-radius:12px;background:#0F1A16;z-index:2}
+.phone-scr{border-radius:36px;overflow:hidden;background:#E9E4DC}
+.chat-hdr{background:var(--verde);color:#fff;padding:40px 16px 14px;display:flex;align-items:center;gap:11px}
+.chat-av{position:relative;width:40px;height:40px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.chat-av::after{content:'';position:absolute;right:0;bottom:0;width:10px;height:10px;border-radius:50%;background:#53D769;border:2px solid var(--verde)}
+.chat-hdr b{font-size:17px;display:flex;align-items:center;gap:6px}
+.chat-hdr .st{font-size:13px;opacity:.9;display:block;min-height:1.25em}
+.chat{padding:14px 12px 20px;display:flex;flex-direction:column;gap:9px;font-size:14px;line-height:1.4;color:#111}
+.chat-day{align-self:center;background:rgba(255,255,255,.85);color:#6b6b6b;font-size:12px;padding:3px 12px;border-radius:8px}
+.b{position:relative;max-width:88%;padding:9px 12px 6px;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.bn{align-self:flex-start;background:#fff;border-radius:12px 12px 12px 3px;transform-origin:0 100%}
+.bu{align-self:flex-end;background:#DCF8C6;border-radius:12px 12px 3px 12px;transform-origin:100% 100%}
+.b.card{width:88%}
+.who{color:var(--verde);font-size:12px;letter-spacing:.03em;font-weight:700}
+.ts{text-align:right;font-size:11px;color:#8a8a8a;margin-top:2px}
+.ts .ck{color:#53BDEB;transition:color .4s}
+.ct{display:flex;align-items:center;gap:7px;font-weight:700;margin:3px 0 6px}
+.row{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #EEF0EE;padding:4px 0}
+.row b.g{color:var(--verde)}
+.ok{display:flex;align-items:center;gap:6px;border-top:1px solid #EEF0EE;padding:6px 0 2px;color:var(--verde);font-weight:600;font-size:13px}
+.ok polyline{stroke-dasharray:24;stroke-dashoffset:0}
+/* secuencia del chat */
+.js .chat.seq .b{opacity:0;transform:translateY(10px) scale(.92);transition:opacity .35s var(--ease),transform .45s var(--spring)}
+.js .chat.seq .b.show{opacity:1;transform:none}
+.js .chat.seq.reset .b,.js .chat.seq.reset .b>*{transition:none!important}
+.js .chat.seq .bu .ck{color:#9aa3a0}
+.js .chat.seq .bu.read .ck{color:#53BDEB}
+/* El contenido de Nodo nace oculto (texto suelto y etiquetas) y aparece UNA sola vez al terminar de escribir */
+.js .chat.seq .bn{color:transparent;transition:opacity .35s var(--ease),transform .45s var(--spring),color .45s var(--ease)}
+.js .chat.seq .bn.done{color:#111}
+.js .chat.seq .bn>*:not(.dots){opacity:0;transition:opacity .45s var(--ease)}
+.js .chat.seq .bn.done>*:not(.dots){opacity:1;transition-delay:calc(var(--k,0)*70ms)}
+.js .chat.seq .bn.done .ok polyline{animation:check .5s var(--ease) .5s both}
+@keyframes check{from{stroke-dashoffset:24}}
+.dots{position:absolute;left:12px;top:50%;margin-top:-4px;display:flex;gap:4px;opacity:0;transition:opacity .2s}
+.bn.typing .dots{opacity:1}
+.dots i{width:7px;height:7px;border-radius:50%;background:#9aa3a0;animation:bounce 1s ease-in-out infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-5px);opacity:1}}
+.replay{position:absolute;right:-6px;bottom:-56px;display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:14px;font-weight:600;color:var(--verde);background:#fff;border:1.5px solid var(--borde-in);border-radius:999px;padding:8px 14px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,transform .25s var(--spring)}
+.replay.on{opacity:1;pointer-events:auto}
+.replay:hover{transform:translateY(-2px);border-color:var(--verde)}
+.replay svg{transition:transform .5s var(--ease)}
+.replay:hover svg{transform:rotate(-180deg)}
 
-/* ── Partners strip ── */
-.strip{
-  border-top:1px solid var(--borde);
-  border-bottom:1px solid var(--borde);
-  padding:22px 0;text-align:center;
-}
-.strip p{font-size:12px;color:#999;font-weight:600;text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px}
-.strip-cities{
-  display:flex;align-items:center;justify-content:center;
-  gap:10px;flex-wrap:wrap;
-}
-.strip-cities span{font-size:14px;color:#666;font-weight:500}
-.strip-cities .dot{color:#ccc}
+/* ── Funciones ── */
+.feats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.feat{cursor:default}
+.feat .ph{height:240px;background:#fff;transition:transform .45s var(--spring),box-shadow .45s,border-color .3s}
+.feat:hover .ph{transform:translateY(-8px) rotate(-1deg);box-shadow:0 22px 40px rgba(31,59,44,.14);border-color:var(--verde)}
+.feat .num{position:absolute;top:14px;left:16px;font-family:var(--fh);font-weight:800;font-size:15px;color:var(--verde);background:var(--verde-lt);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .45s var(--spring),background .3s,color .3s}
+.feat:hover .num{transform:scale(1.15) rotate(-10deg);background:var(--verde);color:#fff}
+.ph.ph-img{padding:0;border:0;background:var(--verde-lt)}
+.ph.ph-img::after{display:none}
+.ph.ph-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ph.ph-img .num{z-index:1;background:#fff;box-shadow:0 2px 8px rgba(31,59,44,.18)}
+.feat h3{position:relative;display:inline-block;font-size:26px;margin:20px 0 6px}
+.feat h3::after{content:'';position:absolute;left:0;bottom:-4px;height:3px;width:100%;border-radius:2px;background:var(--verde);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.feat:hover h3::after{transform:scaleX(1)}
+.feat p{font-size:17px}
+.flow{position:relative;height:4px;margin:0 0 40px;border-radius:2px;background:rgba(64,117,88,.15);overflow:hidden}
+.flow i{position:absolute;top:0;left:0;height:100%;width:25%;border-radius:2px;background:var(--verde);animation:flow 4s var(--ease) infinite}
+@keyframes flow{0%{transform:translateX(-100%)}100%{transform:translateX(400%)}}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;pointer-events:none;animation:blob 18s ease-in-out infinite alternate}
+.blob.b1{width:380px;height:380px;background:#CFE3D7;top:-120px;left:-120px}
+.blob.b2{width:320px;height:320px;background:#DCEBE2;bottom:-120px;right:-80px;animation-delay:-6s}
+@keyframes blob{to{transform:translate(80px,60px) scale(1.15)}}
+.sec-lt .w{position:relative}
 
-/* ── Sección genérica ── */
-.sec{padding:72px 0}
-.sec-alt{background:var(--gris-lt)}
-.sec-verde{background:var(--verde-hdr)}
-.eyebrow{
-  font-size:12px;font-weight:700;color:var(--verde-main);
-  text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px;
-}
-.eyebrow-white{color:#5DCEA0}
-.sec-title{
-  font-size:clamp(26px,4vw,38px);
-  font-weight:900;letter-spacing:-.5px;line-height:1.1;
-  margin-bottom:12px;
-}
-.sec-title-white{color:#fff}
-.sec-sub{font-size:16px;color:var(--gris-txt);line-height:1.65;max-width:520px}
-.sec-sub-white{color:rgba(255,255,255,.7)}
-.sec-hdr{margin-bottom:48px}
+/* ── Voz ── */
+.voz-wrap{position:relative}
+.voz-ph{height:560px}
+.vnote{position:absolute;left:0;right:0;bottom:24px;margin:0 auto;width:calc(100% - 48px);max-width:340px;z-index:2;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:8px 18px 8px 8px;box-shadow:0 14px 34px rgba(31,59,44,.2)}
+.vnote-play{width:40px;height:40px;border-radius:50%;background:var(--verde);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative}
+.vnote-play::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid var(--verde);animation:ring 1.8s ease-out infinite}
+@keyframes ring{from{transform:scale(1);opacity:.8}to{transform:scale(1.7);opacity:0}}
+.wave{flex:1;display:flex;align-items:center;gap:3px;height:32px}
+.wave i{flex:1;max-width:4px;height:100%;border-radius:2px;background:var(--verde);transform-origin:50% 50%;animation:wave 1.1s ease-in-out infinite;animation-delay:calc(var(--i)*-73ms)}
+@keyframes wave{0%,100%{transform:scaleY(.2)}50%{transform:scaleY(1)}}
+.vnote-t{font-size:13px;font-weight:600;color:var(--verde-osc);font-variant-numeric:tabular-nums;min-width:32px}
+.vreply{position:absolute;left:24px;top:24px;z-index:2;background:#fff;border-radius:16px 16px 16px 4px;padding:10px 14px;font-size:15px;font-weight:600;color:var(--verde-osc);box-shadow:0 16px 36px rgba(31,59,44,.18);display:flex;align-items:center;gap:8px;animation:pop 6s var(--spring) infinite}
+@keyframes pop{0%,15%{opacity:0;transform:translateY(10px) scale(.8)}25%,85%{opacity:1;transform:none}95%,100%{opacity:0;transform:translateY(-6px) scale(.96)}}
+.tag{display:inline-flex;align-items:center;gap:8px;background:var(--verde);color:#fff;font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:18px}
+.tag i{width:7px;height:7px;border-radius:50%;background:var(--menta);animation:ping 2.2s ease-out infinite}
 
-/* ── Problema ── */
-.problema-inner{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:56px;align-items:center;
-}
-.preguntas{display:flex;flex-direction:column;gap:12px}
-.preg{
-  background:#fff;
-  border:1.5px solid var(--borde);
-  border-radius:10px;
-  padding:14px 18px 14px 44px;
-  font-size:15px;color:#333;font-weight:500;
-  position:relative;
-}
-.preg::before{
-  content:'?';
-  position:absolute;left:14px;top:50%;transform:translateY(-50%);
-  width:22px;height:22px;background:var(--verde-lt);
-  border-radius:50%;font-size:12px;font-weight:700;
-  color:var(--verde-main);text-align:center;line-height:22px;
-}
+/* ── Opiniones ── */
+.opi{position:relative;overflow:hidden;background:var(--verde-osc);color:#fff;padding:100px 0}
+.net{position:absolute;inset:0;width:100%;height:100%;opacity:.55;pointer-events:none}
+.opi .w{position:relative}
+.opi .split{grid-template-columns:1fr 340px}
+.reel{position:relative;aspect-ratio:9/16;border-radius:24px;overflow:hidden;background:linear-gradient(160deg,#5E8F76,#2D5A43);box-shadow:0 30px 60px rgba(0,0,0,.35);transition:transform .5s var(--spring)}
+.reel:hover{transform:rotate(-2deg) scale(1.02)}
+.reel{background:#10241A}
+.reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s var(--ease)}
+.reel video.on{opacity:1}
+.reel::after{content:'';position:absolute;left:0;right:0;top:0;height:90px;background:linear-gradient(rgba(0,0,0,.45),transparent);pointer-events:none;z-index:2}
+.reel-bars{position:absolute;top:8px;left:10px;right:10px;display:flex;gap:4px;z-index:4}
+.reel-bars button{flex:1;height:16px;padding:0;border:0;background:transparent;cursor:pointer;display:flex;align-items:center}
+.reel-bars i{display:block;width:100%;height:3px;border-radius:2px;background:rgba(255,255,255,.4);position:relative;overflow:hidden}
+.reel-bars i b{position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left}
+.reel-tap{position:absolute;inset:0;z-index:1;width:100%;border:0;background:transparent;cursor:pointer;padding:0}
+.reel-play{position:absolute;left:50%;top:50%;z-index:3;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:50%;background:rgba(255,255,255,.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.8);pointer-events:none;transition:opacity .3s,transform .4s var(--spring)}
+.reel.paused .reel-play{opacity:1;transform:none}
+.reel-snd{position:absolute;top:28px;right:12px;z-index:4;width:40px;height:40px;border-radius:50%;border:0;background:rgba(0,0,0,.4);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,transform .25s var(--spring)}
+.reel-snd:hover{background:rgba(0,0,0,.6);transform:scale(1.08)}
+.reel-snd .on{display:none}
+.reel-snd[aria-pressed="true"] .on{display:block}
+.reel-snd[aria-pressed="true"] .off{display:none}
+.reel-hint{position:absolute;left:0;right:0;bottom:14px;z-index:3;text-align:center;font-size:13px;font-weight:600;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6);pointer-events:none;animation:fadeUp .8s var(--ease) 1s both}
+.reel-hint.gone{display:none}
 
-/* ── Features ── */
-.feat-grid{
-  display:grid;grid-template-columns:repeat(2,1fr);
-  gap:2px;background:var(--borde);
-  border-radius:16px;overflow:hidden;border:1px solid var(--borde);
-}
-.feat{
-  background:#fff;padding:32px;
-}
-.feat-ico{
-  width:52px;height:52px;border-radius:50%;
-  border:2px solid var(--borde);
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:18px;font-size:22px;
-  background:#fff;
-}
-.feat h3{font-size:17px;font-weight:800;margin-bottom:8px}
-.feat p{font-size:14px;color:var(--gris-txt);line-height:1.6;margin-bottom:14px}
-.feat-ej{
-  background:var(--gris-lt);
-  border-left:3px solid var(--verde-main);
-  border-radius:0 8px 8px 0;
-  padding:9px 13px;
-  font-size:12.5px;color:#555;font-style:italic;line-height:1.5;
-}
-.flujo-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:2px;background:var(--borde);
-  border-radius:16px;overflow:hidden;border:1px solid var(--borde);
-}
-.flujo-item{background:#fff;padding:28px 22px}
-.flujo-label{font-size:12px;font-weight:800;color:var(--verde-main);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
-.flujo-item h4{font-size:15px;font-weight:800;margin-bottom:8px;line-height:1.35}
-.flujo-item p{font-size:13.5px;color:var(--gris-txt);line-height:1.6}
+/* ── Principios ── */
+.prin{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.prin-c{position:relative;overflow:hidden;height:100%;background:#fff;border:1px solid var(--borde);border-radius:16px;padding:28px;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0));transition:transform .4s var(--ease),box-shadow .4s,border-color .3s}
+.prin-c::before{content:'';position:absolute;inset:0;background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),rgba(143,211,174,.28),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.prin-c:hover{--ty:-6px;box-shadow:0 24px 44px rgba(31,59,44,.12);border-color:#C9DAD0}
+.prin-c:hover::before{opacity:1}
+.prin-c>*{position:relative}
+.prin-ico{width:44px;height:44px;border-radius:50%;background:var(--verde-lt);display:flex;align-items:center;justify-content:center;margin-bottom:14px;transition:transform .5s var(--spring),background .3s}
+.prin-ico svg{transition:stroke .3s}
+.prin-c:hover .prin-ico{transform:scale(1.15) rotate(-12deg);background:var(--verde)}
+.prin-c:hover .prin-ico svg{stroke:#fff}
+.prin-c h3{font-size:22px;margin-bottom:8px}
+.prin-c p{font-size:16px}
+.convic{font-family:var(--fh);font-weight:800;font-size:32px;line-height:1.2;text-align:center;margin:56px auto 0;max-width:620px;color:var(--verde-osc)}
+.convic span{color:var(--verde);background:linear-gradient(var(--menta),var(--menta)) no-repeat 0 88%/0% 30%;transition:background-size 1.2s var(--ease) .5s}
+.convic.in span,html:not(.js) .convic span{background-size:100% 30%}
 
-/* ── Pasos ── */
-.pasos-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:2px;background:rgba(255,255,255,.12);
-  border-radius:16px;overflow:hidden;
-  border:1px solid rgba(255,255,255,.12);
-  margin-top:48px;
-}
-.paso{
-  background:rgba(255,255,255,.06);
-  padding:32px;
-}
-.paso-num{
-  width:44px;height:44px;
-  background:#5DCEA0;color:var(--verde-hdr);
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:18px;font-weight:900;margin-bottom:18px;
-}
-.paso h3{font-size:16px;font-weight:800;color:#fff;margin-bottom:8px}
-.paso p{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6}
+/* ── Demo / formulario ── */
+.demo{text-align:center}
+.form{max-width:460px;margin:0 auto;text-align:left;display:flex;flex-direction:column;gap:14px}
+.form label.f{font-weight:600;font-size:15px;transition:color .2s}
+.form label.f:focus-within{color:var(--verde)}
+.form input[type=text],.form input[type=tel],.form select{display:block;width:100%;margin-top:6px;height:52px;padding:0 16px;border:1.5px solid var(--borde-in);border-radius:12px;font:inherit;font-weight:400;background:#fff;color:var(--tinta);transition:border-color .2s,box-shadow .25s,transform .25s var(--ease)}
+.form select{padding:0 12px}
+.form input:hover,.form select:hover{border-color:#B9C9BF}
+.form input:focus,.form select:focus{outline:none;border-color:var(--verde);box-shadow:0 0 0 4px rgba(64,117,88,.18);transform:translateY(-1px)}
+.form .bad{border-color:#A3361F!important;animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--mute)}
+.chk input{margin-top:4px;accent-color:var(--verde);width:16px;height:16px;flex-shrink:0}
+.chk a{color:var(--verde)}
+.form .btn{height:56px;font-size:18px;padding:0}
+.form-err{color:#A3361F;font-size:14px;font-weight:600;min-height:1em;margin:0}
+.form-ok{display:none;align-items:center;gap:10px;justify-content:center;color:var(--verde);font-weight:700;font-size:16px}
+.form-ok.on{display:flex;animation:fadeUp .5s var(--ease)}
+.form-ok circle{stroke-dasharray:64;stroke-dashoffset:64;animation:dash .6s var(--ease) forwards}
+.form-ok polyline{stroke-dasharray:20;stroke-dashoffset:20;animation:dash .4s var(--ease) .5s forwards}
+@keyframes dash{to{stroke-dashoffset:0}}
 
-/* ── Así funciona (ampliado) ── */
-.pos-badges{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:32px}
-.pos-badge{background:var(--verde-main);color:#fff;font-size:13px;font-weight:500;padding:12px 20px;border-radius:8px;max-width:320px;text-align:center;line-height:1.5}
-.pos-badge strong{font-weight:800}
+/* ── WhatsApp flotante ── */
+.wa-float{position:fixed;right:24px;bottom:24px;z-index:40;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform .45s var(--spring)}
+.wa-float::before{content:'';position:absolute;inset:0;border-radius:50%;background:#25D366;animation:ring 2.4s ease-out infinite;z-index:-1}
+.wa-float:hover{transform:scale(1.1) rotate(-8deg)}
+.js .wa-float{transform:scale(0)}
+.js .wa-float.show{transform:scale(1)}
+.js .wa-float.show:hover{transform:scale(1.1) rotate(-8deg)}
+.wa-tip{position:fixed;right:96px;bottom:36px;z-index:40;background:#fff;color:var(--verde-osc);font-size:15px;font-weight:600;padding:10px 14px;border-radius:14px 14px 4px 14px;box-shadow:0 10px 30px rgba(0,0,0,.16);opacity:0;transform:translateX(12px) scale(.9);transform-origin:100% 100%;pointer-events:none;transition:opacity .35s,transform .45s var(--spring)}
+.wa-tip.on{opacity:1;transform:none}
 
-/* ── Roles ── */
-.roles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.role-card{background:#fff;border:1.5px solid var(--borde);border-radius:14px;padding:26px}
-.role-tag{font-size:12px;color:var(--verde-main);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
-.role-card h4{font-size:18px;font-weight:800;margin-bottom:8px}
-.role-card p{font-size:14px;color:var(--gris-txt);line-height:1.6}
-
-/* ── Canales ── */
-.canales-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:24px}
-.canal-chip{
-  border-radius:20px;padding:9px 18px;font-size:14px;font-weight:600;
-  border:1.5px solid var(--verde-main);color:var(--verde-main);background:var(--verde-lt);
-}
-.canal-chip.proximo{border:1.5px dashed var(--borde);color:#999;background:transparent;font-weight:500}
-.canal-arrow{color:#bbb;font-size:15px}
-
-/* ── Nosotros ── */
-.nosotros-lead{max-width:720px;margin:0 auto 8px}
-.nosotros-lead p{font-size:16px;color:var(--gris-txt);line-height:1.75;margin-bottom:16px}
-.nosotros-lead p:last-child{margin-bottom:0}
-.nosotros-lead em{font-style:italic;color:#333}
-.divider{border-top:1px solid var(--borde);margin:48px 0}
-.duo-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.duo-card{background:var(--gris-lt);border-radius:14px;padding:28px}
-.duo-label{font-size:12px;font-weight:700;color:var(--verde-main);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
-.duo-text{font-size:17px;color:var(--negro);font-weight:600;line-height:1.5}
-.principios-hdr{text-align:center;margin-bottom:32px}
-.principios-title{font-size:clamp(22px,3vw,28px);font-weight:900;letter-spacing:-.3px}
-.conviccion{max-width:640px;margin:0 auto;text-align:center;font-size:clamp(20px,2.6vw,26px);font-weight:800;color:var(--negro);line-height:1.45}
-
-/* ── Stats ── */
-.stats-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:16px;margin-bottom:48px;
-}
-.stat{
-  background:#fff;border:1.5px solid var(--borde);
-  border-radius:12px;padding:24px;text-align:center;
-}
-.stat-n{
-  font-size:40px;font-weight:900;color:var(--verde-main);
-  letter-spacing:-1px;line-height:1;margin-bottom:5px;
-}
-.stat-l{font-size:13px;color:#666;font-weight:500}
-
-/* ── Testimonios ── */
-.testis{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.testi{
-  background:#fff;border:1.5px solid var(--borde);
-  border-radius:12px;padding:24px;
-}
-.testi-stars{color:var(--verde-main);font-size:14px;margin-bottom:12px}
-.testi-txt{
-  font-size:14px;color:#333;line-height:1.7;
-  margin-bottom:16px;font-style:italic;
-}
-.testi-txt::before{content:'\201C'}
-.testi-txt::after{content:'\201D'}
-.testi-aut{display:flex;align-items:center;gap:10px}
-.testi-av{
-  width:38px;height:38px;border-radius:50%;
-  background:var(--verde-lt);
-  display:flex;align-items:center;justify-content:center;
-  font-size:13px;font-weight:700;color:var(--verde-main);flex-shrink:0;
-}
-.testi-n{font-size:13px;font-weight:700}
-.testi-r{font-size:12px;color:#999}
-
-/* ── Precios ── */
-.precios-grid{
-  display:grid;grid-template-columns:repeat(2,1fr);
-  gap:16px;max-width:680px;margin:48px auto 0;
-}
-.precio{
-  background:#fff;border:1.5px solid var(--borde);
-  border-radius:14px;padding:28px;
-}
-.precio.feat-p{
-  border-color:var(--verde-main);position:relative;
-}
-.badge-p{
-  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
-  background:var(--verde-main);color:#fff;
-  font-size:11px;font-weight:700;
-  padding:4px 14px;border-radius:20px;white-space:nowrap;
-}
-.plan-name{font-size:13px;color:#999;font-weight:600;margin-bottom:8px}
-.plan-price{
-  font-size:40px;font-weight:900;color:var(--negro);
-  letter-spacing:-1px;line-height:1;margin-bottom:4px;
-}
-.plan-price sup{font-size:18px;vertical-align:top;margin-top:6px}
-.plan-per{font-size:13px;color:#999;margin-bottom:20px}
-.plan-feats{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
-.plan-feats li{
-  display:flex;align-items:flex-start;gap:8px;
-  font-size:14px;color:#444;
-}
-.plan-feats li svg{width:16px;height:16px;color:var(--verde-main);flex-shrink:0;margin-top:2px}
-.plan-cta{
-  display:block;width:100%;text-align:center;
-  padding:12px;border-radius:8px;font-size:14px;font-weight:700;
-  font-family:var(--f);cursor:pointer;text-decoration:none;
-  transition:all .15s;
-}
-.plan-cta.outline{border:1.5px solid var(--borde);color:#555;background:transparent}
-.plan-cta.outline:hover{border-color:var(--verde-main);color:var(--verde-main)}
-.plan-cta.solid{background:var(--verde-main);color:#fff;border:none}
-.plan-cta.solid:hover{background:var(--verde-hdr)}
-
-/* ── CTA final ── */
-.cta-sec{
-  background:var(--verde-hdr);
-  padding:96px 24px;text-align:center;
-}
-.cta-sec h2{
-  font-size:clamp(32px,5vw,52px);
-  font-weight:900;color:#fff;
-  letter-spacing:-1px;line-height:1.1;margin-bottom:14px;
-}
-.cta-sec h2 em{font-style:normal;color:#5DCEA0}
-.cta-sec p{font-size:16px;color:rgba(255,255,255,.65);margin-bottom:32px}
-.cta-note{margin-top:14px;font-size:13px;color:#5DCEA0;font-weight:500}
+/* ── Volver arriba ── */
+.to-top{position:fixed;left:24px;bottom:24px;z-index:40;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--borde-in);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 20px rgba(31,59,44,.12);opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .3s,transform .4s var(--spring),border-color .2s}
+.to-top.on{opacity:1;transform:none;pointer-events:auto}
+.to-top:hover{border-color:var(--verde);transform:translateY(-3px)}
 
 /* ── Footer ── */
-footer{
-  background:var(--verde-hdr);
-  border-top:1px solid rgba(255,255,255,.1);
-  padding:28px 24px;
-}
-.footer-inner{
-  max-width:1060px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:16px;
-}
-.footer-logo{font-size:18px;font-weight:900;color:#fff}
-.footer-links{display:flex;gap:20px}
-.footer-links a{font-size:13px;color:rgba(255,255,255,.5);text-decoration:none}
-.footer-links a:hover{color:#fff}
-.footer-copy{font-size:13px;color:rgba(255,255,255,.4)}
+.foot{background:var(--verde-osc);color:var(--suave);padding:36px 0;font-size:14px}
+.foot .w{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
+.foot-logo{color:#fff;font-size:20px;font-family:var(--fh);font-weight:800}
+.foot-links{display:flex;gap:16px}
+.foot-links a{color:#fff;text-decoration:none;background:linear-gradient(currentColor,currentColor) no-repeat 0 100%/0 1px;transition:background-size .3s var(--ease)}
+.foot-links a:hover{background-size:100% 1px}
 
 /* ── Responsive ── */
-@media(max-width:768px){
-  .hero-inner{grid-template-columns:1fr;gap:40px;padding-bottom:0}
-  .phone-wrap{display:none}
-  .problema-inner{grid-template-columns:1fr}
-  .feat-grid{grid-template-columns:1fr}
-  .flujo-grid{grid-template-columns:1fr}
-  .pasos-grid{grid-template-columns:1fr}
-  .roles-grid{grid-template-columns:1fr}
-  .canales-row{flex-wrap:wrap}
-  .stats-grid{grid-template-columns:repeat(2,1fr)}
-  .testis{grid-template-columns:1fr}
-  .precios-grid{grid-template-columns:1fr;max-width:360px}
-  .duo-grid{grid-template-columns:1fr}
-  .nav-links{display:none}
+@media(max-width:1000px){
+  .nav-links,.btn-ghost{display:none}
+  .menu-btn{display:flex}
+  .feats{grid-template-columns:repeat(2,1fr)}
 }
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media(min-width:1001px){.menu-mob{display:none}}
+@media(max-width:760px){
+  body{font-size:17px}
+  h2{font-size:34px}
+  .w{padding:0 20px}
+  .nav-in{padding:0 20px}
+  .logo{font-size:23px}
+  .nav .btn{padding:9px 14px;font-size:14px}
+  .lead{font-size:18px}
+
+  .hero{height:680px}
+  .hero-media{inset:0 0 auto 0;height:440px;-webkit-mask-image:none;mask-image:none}
+  .hero-media img{object-position:50% 40%}
+  .hero::after{background:linear-gradient(180deg,rgba(var(--verde-hero),0) 28%,rgba(var(--verde-hero),.9) 56%,var(--verde-osc) 68%)}
+  .hero .w{justify-content:flex-end;padding-bottom:30px}
+  .hero h1{font-size:42px;margin-bottom:14px}
+  .hero p{font-size:17px;margin-bottom:24px}
+        .btn-white{font-size:17px;padding:16px 24px}
+  
+  .sec{padding:72px 0}
+  .sec-lt,.opi{padding:72px 0}
+  .split,.opi .split{grid-template-columns:1fr;gap:48px}
+  .phone-box{margin-bottom:40px}
+  .replay{right:50%;transform:translateX(50%);bottom:-58px}
+  .replay:hover{transform:translateX(50%) translateY(-2px)}
+  .feats{grid-template-columns:1fr;gap:32px}
+  .feat .ph{height:200px}
+  .voz-wrap{order:2}
+  .voz-ph{height:400px}
+  .vnote{bottom:14px;width:calc(100% - 28px)}
+  .vreply{left:14px;top:14px;font-size:14px}
+  .opi .reel{max-width:320px;width:100%;justify-self:center}
+  .prin{grid-template-columns:1fr}
+  .convic{font-size:24px;margin-top:40px}
+  .feats-title{margin-bottom:28px!important}
+  .wa-float{right:16px;bottom:16px;width:56px;height:56px}
+  .wa-tip{right:82px;bottom:26px;font-size:14px;max-width:calc(100vw - 100px)}
+  .js .rv.rv-l:not(.in),.js .rv.rv-r:not(.in){transform:translateY(32px)}
+  .to-top{left:16px;bottom:16px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .js .rv,.js .chat.seq .b,.js .wa-float{opacity:1!important;transform:none!important}
+  .js .chat.seq .bn{color:#111!important}
+  .js .chat.seq .bn>*:not(.dots){opacity:1!important}
+  .dots{display:none}
+  .convic span{background-size:100% 30%}
+  .reel-bars i:first-child::after{transform:scaleX(1)}
+}
 </style>
 </head>
 <body>
 
+<div class="progress" id="progress" aria-hidden="true"></div>
+
 <!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <div class="nav-logo">
-      <div class="nav-logo-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#5DCEA0" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="4" cy="18" r="2"/><circle cx="20" cy="18" r="2"/><line x1="6" y1="6.5" x2="10" y2="11"/><line x1="18" y1="6.5" x2="14" y2="11"/><line x1="6" y1="17.5" x2="10" y2="13"/><line x1="18" y1="17.5" x2="14" y2="13"/></svg>
-      </div>
-      nodo
-    </div>
-    <ul class="nav-links">
-      <li><a href="#funciones">Funciones</a></li>
-      <li><a href="#como">Cómo funciona</a></li>
-      <li><a href="#roles">Roles</a></li>
-      <li><a href="#nosotros">Nosotros</a></li>
-      <li><a href="#precios">Precios</a></li>
-    </ul>
-    <a href="https://wa.me/573115633264?text=Hola" class="nav-cta" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Empezar gratis
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a href="#" class="logo" aria-label="Nodo, inicio">
+      <span class="logo-tile"><svg class="logo-ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7BE0B0" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle class="core" cx="12" cy="12" r="3"/><circle cx="4" cy="4" r="2"/><circle cx="20" cy="4" r="2"/><circle cx="4" cy="20" r="2"/><circle cx="20" cy="20" r="2"/><line x1="5.6" y1="5.6" x2="9.9" y2="9.9"/><line x1="18.4" y1="5.6" x2="14.1" y2="9.9"/><line x1="5.6" y1="18.4" x2="9.9" y2="14.1"/><line x1="18.4" y1="18.4" x2="14.1" y2="14.1"/></svg></span>nodo
     </a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#que-es">Qué es Nodo</a>
+      <a href="#funciones">Cómo funciona</a>
+      <a href="#voz">Voz</a>
+      <a href="#opiniones">Opiniones</a>
+    </nav>
+    <div class="nav-acts">
+      <a href="https://wa.me/573115633264" data-wa="Hola, vengo de la página de Nodo y quiero hacerles una pregunta." class="btn-ghost" target="_blank" rel="noopener">Escríbenos</a>
+      <a class="btn" href="#demo">Agenda una demo</a>
+      <button type="button" class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menuMob">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F3B2C" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
   </div>
-</nav>
+  <nav class="menu-mob" id="menuMob" aria-label="Menú móvil">
+    <div>
+      <a href="#que-es">Qué es Nodo</a>
+      <a href="#funciones">Cómo funciona</a>
+      <a href="#voz">Voz</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="https://wa.me/573115633264" data-wa="Hola, estoy viendo la página de Nodo desde mi celular y quiero más información." target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+    </div>
+  </nav>
+</header>
+
+<main>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-tag">
-        <div class="tag-pill" style="border-color:rgba(93,206,160,.5);color:#5DCEA0">
-          Disponible en WhatsApp
-        </div>
-      </div>
-      <h1>Lleva el control<br>de tu negocio<br>desde <em>WhatsApp.</em></h1>
-      <p class="hero-desc">Sincroniza tus ventas, caja, pagos e inventario de tu punto de venta. Tu equipo registra, consulta y gestiona el negocio desde WhatsApp, sin cambiar la forma en que trabajan.</p>
-      <div class="hero-ctas">
-        <a href="https://wa.me/573115633264?text=Hola" class="btn-wsp" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Hablar con NODO
-        </a>
-        <a href="#como" class="btn-outline">Ver cómo funciona</a>
-      </div>
-      <div class="hero-checks">
-        <span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          45 días gratis
-        </span>
-      </div>
-    </div>
-
-    <div class="phone-wrap">
-      <div class="phone" role="img" aria-label="Chat de WhatsApp con NODO">
-        <div class="phone-notch"></div>
-        <div class="chat-hdr">
-          <div class="chat-av">N</div>
-          <div>
-            <div class="chat-hdr-name">Nodo ✓</div>
-            <div class="chat-hdr-status">en línea</div>
-          </div>
-        </div>
-        <div class="chat-body">
-          <div class="chat-date"><span>Hoy</span></div>
-
-          <div class="bn">
-            <div class="bn-name">NODO</div>
-            ¡Hola! Soy NODO. Te ayudo a llevar el control de tu negocio desde WhatsApp.
-            <div class="bt">10:41</div>
-          </div>
-
-          <div class="bu">
-            Vendí 5 camisetas moradas de $25.000 a María López. Me paga por Nequi.
-            <div class="bt">10:42 <span class="bck">✓✓</span></div>
-          </div>
-
-          <div class="bn">
-            <div class="bn-name">NODO</div>
-            <span class="bb">🧾 Venta registrada</span><br>
-            Camiseta morada · 5 unidades<br>
-            Total: <span class="bg">$125.000</span><br>
-            Cliente: María López<br>
-            Pago: <span class="bb">Nequi</span><br>
-            Inventario actualizado: ✓
-            <div class="bt">10:42</div>
-          </div>
-
-          <div class="bu">
-            ¿Cómo está mi inventario?
-            <div class="bt">10:43 <span class="bck">✓✓</span></div>
-          </div>
-
-          <div class="bn">
-            <div class="bn-name">NODO</div>
-            <span class="bb">📦 Inventario actualizado</span><br>
-            Camiseta morada: <span class="bg">165 unidades</span><br>
-            Jeans: <span class="bg">115 unidades</span>
-            <div class="bt">10:43</div>
-          </div>
-        </div>
-      </div>
-    </div>
+<section class="hero" id="hero">
+  <div class="hero-media" id="heroMedia"><img src="hero.webp" alt="Comerciante de una tienda de telas y una persona de Nodo miran juntas el celular" fetchpriority="high"></div>
+  <div class="w">
+    <h1 id="heroTitle">Tu negocio, en un mensaje.</h1>
+    <p class="up">Sincroniza tus ventas, caja, pagos e inventario de tu punto de venta.</p>
+    <div class="cta up"><a class="btn btn-white" href="#demo">Agenda una demo<span class="arr" aria-hidden="true">→</span></a></div>
   </div>
 </section>
 
-<!-- STRIP -->
-<div class="strip">
-  <div class="container">
-    <p>Usado por negocios en</p>
-    <div class="strip-cities">
-      <span>Bogotá</span>
+<!-- QUÉ ES NODO -->
+<section class="sec" id="que-es">
+  <div class="w split">
+    <div>
+      <h2 class="rv" style="margin-bottom:20px">Sin programas nuevos.</h2>
+      <p class="mute lead rv" style="--d:1">Nodo vive dentro de WhatsApp. Escribes lo que pasa en tu negocio y queda ordenado: ventas, inventario, caja y pagos.</p>
     </div>
-  </div>
-</div>
-
-<!-- PROBLEMA -->
-<section class="sec">
-  <div class="container">
-    <div class="problema-inner">
-      <div>
-        <div class="eyebrow">El problema</div>
-        <h2 class="sec-title">Si no sabes la respuesta de inmediato,<br><span style="color:var(--verde-main)">NODO es para ti.</span></h2>
-        <p class="sec-sub" style="margin-top:14px">Los dueños de negocio colombianos pierden tiempo y plata por no llevar el control de su negocio. No porque no quieran, sino porque ninguna herramienta se adapta a cómo trabajan realmente.</p>
+    <div class="phone-box rv rv-r">
+      <div class="phone" role="img" aria-label="Conversación de ejemplo con Nodo: el comerciante registra la venta de 5 camisetas moradas por 125.000 pesos pagada con Bre-B y consulta el inventario: 165 camisetas moradas y 115 jeans">
+        <div class="phone-notch"></div>
+        <div class="phone-scr">
+          <div class="chat-hdr">
+            <span class="chat-av"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#407558" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="4" cy="18" r="2"/><circle cx="20" cy="18" r="2"/><line x1="6" y1="6.5" x2="10" y2="11"/><line x1="18" y1="6.5" x2="14" y2="11"/><line x1="6" y1="17.5" x2="10" y2="13"/><line x1="18" y1="17.5" x2="14" y2="13"/></svg></span>
+            <div style="line-height:1.25">
+              <b>Nodo <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#fff"/><polyline points="7 12.5 10.5 16 17 9" fill="none" stroke="#407558" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></b>
+              <span class="st" id="chatStatus">en línea</span>
+            </div>
+          </div>
+          <div class="chat seq" id="chat" aria-hidden="true">
+            <span class="chat-day">Hoy</span>
+            <div class="b bn"><span class="who">NODO</span><br>¡Hola! Soy NODO. Te ayudo a llevar el control de tu negocio desde WhatsApp.<div class="ts">10:41</div></div>
+            <div class="b bu">Vendí 5 camisetas moradas de $25.000 a María López. Me paga por Bre-B.<div class="ts">10:42 <span class="ck">✓✓</span></div></div>
+            <div class="b bn card">
+              <span class="who">NODO</span>
+              <div class="ct"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#407558" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="9" y1="12" x2="15" y2="12"/></svg>Venta registrada</div>
+              <div class="row"><span>Camiseta morada</span><b>5 unidades</b></div>
+              <div class="row"><span>Total</span><b class="g">$125.000</b></div>
+              <div class="row"><span>Cliente</span><span>María López</span></div>
+              <div class="row"><span>Pago</span><b>Bre-B</b></div>
+              <div class="ok"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#407558" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Inventario actualizado</div>
+              <div class="ts">10:42</div>
+            </div>
+            <div class="b bu">¿Cómo está mi inventario?<div class="ts">10:43 <span class="ck">✓✓</span></div></div>
+            <div class="b bn card">
+              <span class="who">NODO</span>
+              <div class="ct"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#407558" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><polyline points="3 8 12 13 21 8"/><line x1="12" y1="13" x2="12" y2="21"/></svg>Inventario actualizado</div>
+              <div class="row"><span>Camiseta morada</span><b class="g">165 unidades</b></div>
+              <div class="row"><span>Jeans</span><b class="g">115 unidades</b></div>
+              <div class="ts">10:43</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <h2 class="sec-title" style="color:var(--verde-main)">Nodo conecta todo.</h2>
-        <p class="sec-sub" style="margin-top:14px">Una sola capa conversacional para operar el negocio.</p>
-      </div>
+      <button type="button" class="replay" id="replay">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 3 3 8 8 8"/></svg>Ver de nuevo
+      </button>
     </div>
   </div>
 </section>
 
 <!-- FUNCIONES -->
-<section class="sec sec-alt" id="funciones">
-  <div class="container">
-    <div class="sec-hdr">
-      <div class="eyebrow">Funciones</div>
-      <h2 class="sec-title">Todo lo que necesitas,<br>en un mensaje de WhatsApp</h2>
-    </div>
-    <div class="flujo-grid">
-      <div class="flujo-item">
-        <div class="flujo-label">Vende</div>
-        <h4>Registra la venta una sola vez.</h4>
-        <p>Nodo lleva la venta desde el vendedor hasta el siguiente paso de la operación.</p>
+<section class="sec-lt" id="funciones">
+  <span class="blob b1" aria-hidden="true"></span><span class="blob b2" aria-hidden="true"></span>
+  <div class="w">
+    <h2 class="feats-title rv" style="text-align:center;margin:0 auto 56px;max-width:700px">Todo lo que necesitas, en un mensaje de WhatsApp.</h2>
+    <div class="flow rv" aria-hidden="true"><i></i></div>
+    <div class="feats">
+      <div class="feat rv" style="--d:0">
+        <div class="ph ph-img"><span class="num" aria-hidden="true">1</span><img src="img/funciones-1.webp" alt="Vendedora en el mostrador registrando una venta en el celular" loading="lazy" decoding="async"></div>
+        <h3>Vende</h3>
+        <p class="mute">Registra la venta una sola vez.</p>
       </div>
-      <div class="flujo-item">
-        <div class="flujo-label">Cobra</div>
-        <h4>Cada venta tiene un pago.</h4>
-        <p>Bre-B, efectivo o tarjeta. Nodo identifica cómo se paga y conecta el pago con la operación.</p>
+      <div class="feat rv" style="--d:1">
+        <div class="ph ph-img"><span class="num" aria-hidden="true">2</span><img src="img/funciones-2.webp" alt="Cliente pagando con el celular escaneando un código QR en el mostrador" loading="lazy" decoding="async"></div>
+        <h3>Cobra</h3>
+        <p class="mute">Bre-B, efectivo o tarjeta.</p>
       </div>
-      <div class="flujo-item">
-        <div class="flujo-label">Actualiza</div>
-        <h4>El inventario se mueve con cada venta.</h4>
-        <p>Entradas, salidas, ajustes y cargas masivas. Tu inventario deja de quedar atrás.</p>
+      <div class="feat rv" style="--d:2">
+        <div class="ph ph-img"><span class="num" aria-hidden="true">3</span><img src="img/funciones-3.webp" alt="Estantes con ropa y telas de colores bien ordenados" loading="lazy" decoding="async"></div>
+        <h3>Actualiza</h3>
+        <p class="mute">El inventario se mueve con cada venta.</p>
       </div>
-      <div class="flujo-item">
-        <div class="flujo-label">Controla</div>
-        <h4>Todo lo que pasa en el negocio queda conectado.</h4>
-        <p>Qué se vendió, cuánto hay, qué se pagó y qué está pasando en el punto de venta.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ASÍ FUNCIONA (AMPLIADO) -->
-<section class="sec sec-verde" id="como">
-  <div class="container">
-    <div style="text-align:center">
-      <div class="eyebrow eyebrow-white">Cómo funciona</div>
-      <h2 class="sec-title sec-title-white">Así funciona Nodo</h2>
-      <p class="sec-sub-white" style="margin:0 auto">Tu equipo habla. Nodo conecta la operación.</p>
-    </div>
-    <div class="pasos-grid">
-      <div class="paso">
-        <div class="paso-num">1</div>
-        <h3>Registra</h3>
-        <p>Habla como ya trabajas. El vendedor registra la venta como le hablaría a un amigo, y Nodo la convierte en datos estructurados.</p>
-      </div>
-      <div class="paso">
-        <div class="paso-num">2</div>
-        <h3>Conecta</h3>
-        <p>Una acción actualiza todo lo que corresponde: la venta queda registrada, el pago sigue su flujo y el inventario se actualiza. Sin volver a registrar la misma información.</p>
-      </div>
-      <div class="paso">
-        <div class="paso-num">3</div>
+      <div class="feat rv" style="--d:3">
+        <div class="ph ph-img"><span class="num" aria-hidden="true">4</span><img src="img/funciones-4.webp" alt="Dueña del negocio revisando el celular y anotando en su libreta junto al portátil" loading="lazy" decoding="async"></div>
         <h3>Controla</h3>
-        <p>Cada persona ve lo que necesita: el vendedor sus ventas, caja las operaciones pendientes y el dueño el negocio completo.</p>
-      </div>
-      <div class="paso">
-        <div class="paso-num">4</div>
-        <h3>Decide</h3>
-        <p>Deja de operar a ciegas. Ventas, pagos, caja e inventario se convierten en información para saber qué está pasando y qué hacer después.</p>
-      </div>
-    </div>
-    <div class="pos-badges">
-      <div class="pos-badge"><strong>Si ya tienes POS,</strong> Nodo se conecta.</div>
-      <div class="pos-badge"><strong>Si no tienes POS,</strong> Nodo te permite comenzar con un flujo simple.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ROLES -->
-<section class="sec sec-alt" id="roles">
-  <div class="container">
-    <div class="sec-hdr">
-      <div class="eyebrow">Roles</div>
-      <h2 class="sec-title">Cada persona ve lo que necesita</h2>
-      <p class="sec-sub" style="margin-top:10px">Y una conversación para cada uno.</p>
-    </div>
-    <div class="roles-grid">
-      <div class="role-card">
-        <div class="role-tag">Vendedor</div>
-        <h4>Vende y consulta</h4>
-        <p>Registra ventas, consulta inventario y revisa sus propias ventas.</p>
-      </div>
-      <div class="role-card">
-        <div class="role-tag">Caja</div>
-        <h4>Recibe y continúa</h4>
-        <p>Recibe los tickets de pago y continúa las ventas en efectivo o tarjeta.</p>
-      </div>
-      <div class="role-card">
-        <div class="role-tag">Dueño / Administrador</div>
-        <h4>Controla todo</h4>
-        <p>Tiene una visión completa del negocio: ventas, vendedores, caja, pagos e inventario.</p>
+        <p class="mute">Todo lo que pasa en tu negocio queda conectado.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CANALES -->
-<section class="sec">
-  <div class="container">
-    <div class="eyebrow">Un solo lugar para toda tu operación</div>
-    <p class="sec-sub" style="max-width:620px">Hoy empezamos por tu punto físico. Mañana, Nodo podrá conectar también los canales digitales donde vendes.</p>
-    <div class="canales-row">
-      <div class="canal-chip">Punto físico</div>
-      <div class="canal-chip">WhatsApp</div>
-      <span class="canal-arrow">→</span>
-      <div class="canal-chip proximo">Ecommerce</div>
-      <span class="canal-arrow">→</span>
-      <div class="canal-chip proximo">Redes sociales</div>
-      <span class="canal-arrow">→</span>
-      <div class="canal-chip proximo">Otros canales</div>
+<!-- VOZ -->
+<section class="sec" id="voz">
+  <div class="w split">
+    <div class="voz-wrap rv rv-l">
+      <div class="ph ph-img voz-ph"><img src="img/voz.webp" alt="Comerciante en su tienda de ropa grabando un mensaje de voz en el celular" loading="lazy" decoding="async" style="object-position:45% 40%"></div>
+      <div class="vreply" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#407558" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Venta registrada
+      </div>
+      <div class="vnote" aria-hidden="true">
+        <span class="vnote-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><line x1="12" y1="18" x2="12" y2="21"/></svg></span>
+        <span class="wave" id="wave"></span>
+        <span class="vnote-t" id="vnoteT">0:00</span>
+      </div>
+    </div>
+    <div>
+      <span class="tag rv"><i aria-hidden="true"></i>Nuevo</span>
+      <h2 class="rv" style="--d:1;margin-bottom:20px">Ahora también puedes hablarle.</h2>
+      <p class="mute lead rv" style="--d:2;margin-bottom:30px">Manda un mensaje de voz por WhatsApp. Nodo lo escucha y lo registra por ti.</p>
+      <div class="rv" style="--d:3"><a class="btn" href="#demo">Agenda una demo<span class="arr" aria-hidden="true">→</span></a></div>
     </div>
   </div>
 </section>
 
-<!-- NOSOTROS -->
-<section class="sec" id="nosotros">
-  <div class="container">
-    <div class="sec-hdr">
-      <div class="eyebrow">Nosotros</div>
-      <h2 class="sec-title">Estamos construyendo la próxima generación del software empresarial.</h2>
+<!-- OPINIONES -->
+<section class="opi" id="opiniones">
+  <canvas class="net" id="net" aria-hidden="true"></canvas>
+  <div class="w split">
+    <div>
+      <h2 class="rv" style="color:#fff;margin-bottom:20px">Lo cuentan quienes ya lo usan.</h2>
+      <p class="lead rv" style="--d:1;color:var(--suave)">Dueños de negocio, con sus propias palabras.</p>
     </div>
-
-    <div class="nosotros-lead">
-      <p>Durante décadas, el software para negocios se diseñó alrededor de pantallas, menús y procesos que obligaban a las empresas a adaptarse a la tecnología. Creemos que la inteligencia artificial cambia esa lógica.</p>
-      <p>En Nodo estamos construyendo el <em>sistema operativo conversacional para pequeños y medianos negocios</em>, donde la interfaz no es un nuevo software, sino la herramienta que millones de empresas ya utilizan todos los días: <strong>WhatsApp</strong>.</p>
-      <p>Nuestro objetivo no es crear otro ERP. Es construir una nueva forma de operar un negocio.</p>
-      <p>Registrar una venta, consultar el inventario, emitir una factura electrónica o gestionar cuentas por cobrar debería ser tan simple como enviar un mensaje. La tecnología debe entender el contexto, ejecutar las tareas y desaparecer del proceso.</p>
-      <p style="font-weight:700;color:var(--negro)">Ese es el futuro que estamos construyendo.</p>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="duo-grid">
-      <div class="duo-card">
-        <div class="duo-label">Nuestra misión</div>
-        <p class="duo-text">Simplificar la operación de los pequeños y medianos negocios mediante una experiencia conversacional impulsada por inteligencia artificial.</p>
+    <div class="reel rv rv-s" id="reel" style="--d:1" role="region" aria-label="Videos de clientes de Nodo">
+      <video src="videos/resena-1.mp4" poster="videos/resena-1.jpg" class="on" playsinline muted preload="metadata" aria-label="Reseña en video de un cliente de Nodo, 1 de 2"></video>
+      <video src="videos/resena-2.mp4" poster="videos/resena-2.jpg" playsinline muted preload="metadata" aria-label="Reseña en video de un cliente de Nodo, 2 de 2"></video>
+      <div class="reel-bars" id="reelBars">
+        <button type="button" aria-label="Ver video 1"><i><b></b></i></button>
+        <button type="button" aria-label="Ver video 2"><i><b></b></i></button>
       </div>
-      <div class="duo-card">
-        <div class="duo-label">Nuestra visión</div>
-        <p class="duo-text">Ser el sistema operativo conversacional que transforme la forma en que las pequeñas y medianas empresas gestionan su operación en Latinoamérica.</p>
-      </div>
+      <button type="button" class="reel-tap" id="reelTap" aria-label="Pausar o reproducir el video"></button>
+      <span class="reel-play" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+      <button type="button" class="reel-snd" id="reelSnd" aria-label="Activar sonido" aria-pressed="false">
+        <svg class="off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/></svg>
+        <svg class="on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>
+      </button>
+      <span class="reel-hint" id="reelHint" aria-hidden="true">Activa el sonido arriba ↗</span>
     </div>
+  </div>
+</section>
 
-    <div class="divider"></div>
-
-    <div class="principios-hdr">
-      <h3 class="principios-title">Nuestros principios</h3>
-    </div>
-    <div class="feat-grid">
-      <div class="feat">
-        <div class="feat-ico">💬</div>
+<!-- PRINCIPIOS -->
+<section class="sec" id="nosotros" style="padding-bottom:40px">
+  <div class="w">
+    <h2 class="rv" style="text-align:center;margin-bottom:44px">Nuestros principios</h2>
+    <div class="prin">
+      <div class="rv" style="--d:0"><div class="prin-c">
+        <span class="prin-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#407558" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span>
         <h3>Conversaciones antes que interfaces</h3>
-        <p>Creemos que la mejor experiencia de usuario es aquella que no requiere aprendizaje. Si una persona sabe usar WhatsApp, también debería poder administrar su negocio.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-ico">🎯</div>
+        <p class="mute">Si una persona sabe usar WhatsApp, también debería poder administrar su negocio.</p>
+      </div></div>
+      <div class="rv" style="--d:1"><div class="prin-c">
+        <span class="prin-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#407558" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></svg></span>
         <h3>Inteligencia artificial con propósito</h3>
-        <p>La IA no debe añadir complejidad. Debe comprender el contexto, automatizar tareas y permitir que las personas dediquen su tiempo a hacer crecer su negocio.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-ico">⚡</div>
+        <p class="mute">La IA no debe añadir complejidad. Debe comprender el contexto y automatizar tareas para que las personas se dediquen a hacer crecer su negocio.</p>
+      </div></div>
+      <div class="rv" style="--d:2"><div class="prin-c">
+        <span class="prin-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#407558" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></svg></span>
         <h3>Simplicidad como ventaja</h3>
-        <p>Cada funcionalidad que construimos debe reducir pasos, ahorrar tiempo y eliminar fricción en la operación diaria.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-ico">🔄</div>
+        <p class="mute">Cada funcionalidad debe reducir pasos, ahorrar tiempo y eliminar fricción en la operación diaria.</p>
+      </div></div>
+      <div class="rv" style="--d:3"><div class="prin-c">
+        <span class="prin-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#407558" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3"/><polyline points="18 3 18 7 14 7"/><polyline points="6 21 6 17 10 17"/></svg></span>
         <h3>Construimos para el día a día</h3>
-        <p>Diseñamos Nodo para resolver los procesos que realmente ocurren todos los días en un negocio, no para llenar menús con funcionalidades que pocas veces se utilizan.</p>
-      </div>
+        <p class="mute">Diseñamos Nodo para resolver los procesos que ocurren todos los días en un negocio.</p>
+      </div></div>
     </div>
-
-    <div class="divider"></div>
-
-    <p class="conviccion">No creemos que el futuro del software empresarial tenga más botones.<br>Creemos que tendrá <span style="color:var(--verde-main)">mejores conversaciones.</span></p>
+    <p class="convic rv">No creemos que el futuro del software empresarial tenga más botones. Creemos que tendrá <span>mejores conversaciones.</span></p>
   </div>
 </section>
 
-<!-- PRECIOS -->
-<section class="sec sec-alt" id="precios">
-  <div class="container" style="text-align:center">
-    <div class="eyebrow">Precios</div>
-    <h2 class="sec-title">Simple y sin sorpresas</h2>
-    <p class="sec-sub" style="margin:10px auto 0">45 días sin costo. Luego, solo $38.500 pesos mensuales.</p>
-    <div class="precios-grid" style="grid-template-columns:1fr;max-width:360px">
-      <div class="precio feat-p">
-        <div class="plan-name">Plan Nodo</div>
-        <div class="plan-price"><sup>$</sup>38.500</div>
-        <div class="plan-per">por mes · 45 días de prueba gratis</div>
-        <ul class="plan-feats">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Registra tus ventas sin límite</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Control de fiados</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Gestiona tu inventario en tiempo real</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Recibe reportes diarios, semanales y mensuales</li>
-        </ul>
-        <a href="https://wa.me/573115633264?text=Hola, quiero el plan Pro" class="plan-cta solid" target="_blank" rel="noopener">Empezar prueba gratis</a>
-      </div>
-    </div>
+<!-- DEMO -->
+<section class="sec demo" id="demo">
+  <div class="w">
+    <h2 class="rv" style="max-width:640px;margin:0 auto 18px">Conoce cómo se vería tu negocio.</h2>
+    <p class="mute rv" style="--d:1;font-size:21px;margin:0 auto 40px;max-width:480px">Registra tus datos y selecciona el horario para hablar con un asesor.</p>
+    <form class="form" id="demoForm" novalidate>
+      <label class="f rv" style="--d:1">Tu nombre<input type="text" name="nombre" placeholder="Ana Gómez" autocomplete="name" required></label>
+      <label class="f rv" style="--d:2">Tu negocio<input type="text" name="negocio" placeholder="Telas El Sol" autocomplete="organization" required></label>
+      <label class="f rv" style="--d:3">Industria
+        <select name="industria" required>
+          <option value="">Elige tu industria</option>
+          <option>Comercio y tiendas</option>
+          <option>Ropa y telas</option>
+          <option>Alimentos y restaurantes</option>
+          <option>Belleza y cuidado personal</option>
+          <option>Servicios</option>
+          <option>Otro</option>
+        </select>
+      </label>
+      <label class="f rv" style="--d:4">WhatsApp<input type="tel" name="whatsapp" placeholder="300 123 4567" autocomplete="tel" inputmode="tel" required></label>
+      <label class="chk rv" style="--d:5"><input type="checkbox" name="acepto" required><span>Autorizo el tratamiento de mis datos según la <a href="privacidad.html">política de privacidad</a>.</span></label>
+      <p class="form-err" id="formErr" role="alert"></p>
+      <button type="submit" class="btn rv" style="--d:6">Elegir horario<span class="arr" aria-hidden="true">→</span></button>
+      <p class="form-ok" id="formOk" role="status"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#407558" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="7 12.5 10.5 16 17 9"/></svg>Te llevamos a WhatsApp para elegir tu horario.</p>
+    </form>
+    <p class="mute rv" style="font-size:15px;margin:22px 0 0">¿Prefieres escribirnos? WhatsApp <a href="https://wa.me/573115633264" data-wa="Hola, prefiero escribirles directamente: quiero saber cómo Nodo puede ayudar a mi negocio." target="_blank" rel="noopener">+57 311 563 3264</a> · <a href="mailto:contacto@soynodo.online">contacto@soynodo.online</a></p>
   </div>
 </section>
 
-<!-- CTA FINAL -->
-<section class="cta-sec">
-  <div class="container">
-    <h2>Tu negocio,<br><em>en un mensaje.</em></h2>
-    <p>Vende, cobra y controla tu negocio desde WhatsApp.</p>
-    <a href="https://wa.me/573115633264?text=Hola" class="btn-wsp" style="margin:0 auto;font-size:16px;padding:15px 28px" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      ¡Solicita tu prueba gratis!
-    </a>
-    <p class="cta-note">45 días de prueba. Sin instalaciones.</p>
-  </div>
-</section>
+</main>
+
+<button type="button" class="to-top" id="toTop" aria-label="Volver arriba">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F3B2C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 14 12 8 18 14"/></svg>
+</button>
+<span class="wa-tip" id="waTip" aria-hidden="true">¿Tienes preguntas? Escríbenos</span>
+<a class="wa-float" id="waFloat" href="https://wa.me/573115633264" data-wa="Hola, quiero saber más sobre Nodo." target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">nodo</div>
-    <div class="footer-links">
+<footer class="foot">
+  <div class="w">
+    <div><span class="foot-logo">nodo</span><br>NODO TECHNOLOGIES S.A.S. · NIT 902086914-8 · Bogotá, Colombia</div>
+    <div class="foot-links">
       <a href="privacidad.html">Privacidad</a>
       <a href="terminos.html">Términos</a>
-      <a href="https://wa.me/573115633264?text=Hola">Contacto</a>
     </div>
-    <div class="footer-copy">© 2026 NODO · Bogotá, Colombia · soynodo.online</div>
   </div>
 </footer>
 
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $=function(s,c){return (c||document).querySelector(s)};
+  var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+
+  /* Título del hero palabra por palabra */
+  var h1=$('#heroTitle');
+  if(!reduce){
+    var words=h1.textContent.trim().split(/\s+/);
+    h1.setAttribute('aria-label',h1.textContent.trim());
+    h1.innerHTML=words.map(function(w,i){
+      var hl=(i>=words.length-2)?' hl':'';
+      return '<span class="wd'+hl+'" aria-hidden="true"><span style="--i:'+i+'">'+w+'</span></span>';
+    }).join(' ');
+  }
+
+  /* Menú móvil */
+  var nav=$('#nav'),btn=$('#menuBtn');
+  function setMenu(open){
+    nav.classList.toggle('open',open);
+    btn.setAttribute('aria-expanded',open);
+    btn.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
+  }
+  btn.addEventListener('click',function(){setMenu(!nav.classList.contains('open'))});
+  $$('#menuMob a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+
+  /* Scroll: progreso, nav, parallax, botones flotantes */
+  var prog=$('#progress'),media=$('#heroMedia'),hero=$('#hero'),wa=$('#waFloat'),top=$('#toTop');
+  var lastY=window.scrollY,ticking=false;
+  function onScroll(){
+    var y=window.scrollY,h=document.documentElement.scrollHeight-innerHeight;
+    prog.style.transform='scaleX('+(h>0?y/h:0)+')';
+    nav.classList.toggle('scrolled',y>10);
+    if(!nav.classList.contains('open')) nav.classList.toggle('hide',y>lastY&&y>500);
+    lastY=y;
+    if(!reduce&&y<hero.offsetHeight) media.style.transform='translate3d(0,'+(y*.3)+'px,0)';
+    wa.classList.toggle('show',y>300);
+    top.classList.toggle('on',y>1200);
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(onScroll);ticking=true}},{passive:true});
+  onScroll();
+  top.addEventListener('click',function(){window.scrollTo({top:0,behavior:reduce?'auto':'smooth'})});
+
+  /* Burbuja del botón de WhatsApp */
+  var tip=$('#waTip'),tipShown=false;
+  window.addEventListener('scroll',function(){
+    if(tipShown||window.scrollY<900)return;
+    tipShown=true;tip.classList.add('on');
+    setTimeout(function(){tip.classList.remove('on')},5000);
+  },{passive:true});
+
+  /* Mensajes de WhatsApp personalizados */
+  var WA='https://wa.me/573115633264?text=';
+  function setWa(a,msg){a.href=WA+encodeURIComponent(msg)}
+  $$('[data-wa]').forEach(function(a){setWa(a,a.getAttribute('data-wa'))});
+  // el botón flotante cambia de mensaje según la sección que se está viendo
+  var waByStep={
+    'hero':'Hola, vi la página de Nodo y quiero saber más.',
+    'que-es':'Hola, quiero saber cómo funciona Nodo dentro de WhatsApp para mi negocio.',
+    'funciones':'Hola, me interesa registrar ventas, pagos e inventario con Nodo. ¿Me cuentan más?',
+    'voz':'Hola, quiero saber cómo funciona registrar ventas con mensajes de voz en Nodo.',
+    'opiniones':'Hola, vi lo que cuentan otros negocios y quiero probar Nodo.',
+    'nosotros':'Hola, quiero conocer más sobre Nodo y su equipo.',
+    'demo':'Hola, quiero agendar una demo de Nodo.'
+  };
+
+  /* Enlace activo del menú */
+  var links=$$('.nav-links a');
+  var spy=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.classList.toggle('act',a.getAttribute('href')==='#'+e.target.id)});
+      if(waByStep[e.target.id])setWa(wa,waByStep[e.target.id]);
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  ['que-es','funciones','voz','opiniones','nosotros','demo','hero'].forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el)});
+
+  /* Revelado al hacer scroll */
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+  $$('.rv').forEach(function(el){io.observe(el)});
+
+  /* Conversación animada en el teléfono */
+  var chat=$('#chat'),status=$('#chatStatus'),replay=$('#replay'),timers=[];
+  var bubbles=$$('.b',chat);
+  bubbles.forEach(function(b){
+    if(b.classList.contains('bn')){
+      var d=document.createElement('span');d.className='dots';d.innerHTML='<i></i><i></i><i></i>';b.appendChild(d);
+      Array.prototype.forEach.call(b.children,function(c,i){c.style.setProperty('--k',i)});
+    }
+  });
+  function clearT(){timers.forEach(clearTimeout);timers=[]}
+  function at(ms,fn){timers.push(setTimeout(fn,ms))}
+  function play(){
+    clearT();replay.classList.remove('on');
+    // reinicio instantáneo, sin que las burbujas se desvanezcan
+    chat.classList.add('reset');
+    bubbles.forEach(function(b){b.classList.remove('show','typing','done','read')});
+    status.textContent='en línea';
+    void chat.offsetHeight;
+    chat.classList.remove('reset');
+    var t=400;
+    bubbles.forEach(function(b){
+      if(b.classList.contains('bn')){
+        at(t,function(){b.classList.add('show','typing');status.textContent='escribiendo…'});
+        t+=b.classList.contains('card')?1300:900;
+        at(t,function(){b.classList.remove('typing');b.classList.add('done');status.textContent='en línea'});
+        t+=900;
+      }else{
+        at(t,function(){b.classList.add('show')});
+        at(t+700,function(){b.classList.add('read')});
+        t+=1100;
+      }
+    });
+    at(t,function(){replay.classList.add('on')});
+  }
+  if(!reduce){
+    var played=false;
+    // arranca UNA vez, en cuanto el teléfono asoma (no depende del alto de la pantalla)
+    var phoneBox=$('.phone-box');
+    function tryStart(){
+      if(played)return;
+      var r=phoneBox.getBoundingClientRect();
+      if(r.top<innerHeight*.85&&r.bottom>0){played=true;play()}
+    }
+    new IntersectionObserver(function(es){if(es[0].isIntersecting)tryStart()},{threshold:0,rootMargin:'0px 0px -15% 0px'}).observe(phoneBox);
+    // respaldo por si el observador no avisa: al hacer scroll y al cargar
+    window.addEventListener('scroll',tryStart,{passive:true});
+    setTimeout(tryStart,600);
+    replay.addEventListener('click',play);
+  }else{replay.style.display='none'}
+
+  /* Onda de la nota de voz */
+  var wave=$('#wave'),bars='';
+  for(var i=0;i<28;i++)bars+='<i style="--i:'+((i*7)%13)+'"></i>';
+  wave.innerHTML=bars;
+  var vt=$('#vnoteT'),sec=0;
+  if(!reduce)setInterval(function(){sec=(sec+1)%8;vt.textContent='0:0'+sec},1000);else vt.textContent='0:07';
+
+  /* Videos de reseñas: reproducción automática en silencio, uno tras otro */
+  var reelEl=$('#reel'),vids=$$('#reel video'),fills=$$('#reelBars b'),snd=$('#reelSnd'),hint=$('#reelHint');
+  var cur=0,userPaused=reduce,inView=false,sound=false;
+  function curV(){return vids[cur]}
+  function reelSync(){reelEl.classList.toggle('paused',curV().paused)}
+  function reelShow(i){
+    cur=i;
+    vids.forEach(function(v,j){v.classList.toggle('on',j===i);if(j!==i){v.pause();v.currentTime=0}});
+    fills.forEach(function(f,j){f.style.transform=j<i?'scaleX(1)':'scaleX(0)'});
+    reelSync();
+  }
+  function reelPlay(){
+    if(userPaused||!inView)return;
+    var p=curV().play();if(p&&p.catch)p.catch(function(){});
+  }
+  vids.forEach(function(v,i){
+    v.addEventListener('timeupdate',function(){
+      if(i===cur&&v.duration)fills[i].style.transform='scaleX('+(v.currentTime/v.duration)+')';
+    });
+    v.addEventListener('ended',function(){
+      fills[i].style.transform='scaleX(1)';
+      reelShow((i+1)%vids.length);reelPlay();
+    });
+    v.addEventListener('play',reelSync);v.addEventListener('pause',reelSync);
+  });
+  $('#reelTap').addEventListener('click',function(){
+    if(curV().paused){userPaused=false;inView=true;curV().play()}else{userPaused=true;curV().pause()}
+  });
+  $$('#reelBars button').forEach(function(b,j){
+    b.addEventListener('click',function(){userPaused=false;reelShow(j);vids[j].currentTime=0;reelPlay()});
+  });
+  snd.addEventListener('click',function(){
+    sound=!sound;
+    vids.forEach(function(v){v.muted=!sound});
+    snd.setAttribute('aria-pressed',sound);
+    snd.setAttribute('aria-label',sound?'Silenciar':'Activar sonido');
+    if(hint)hint.classList.add('gone');
+    if(sound&&curV().paused&&!userPaused)reelPlay();
+  });
+  new IntersectionObserver(function(es){
+    inView=es[0].isIntersecting;
+    if(inView)reelPlay();else curV().pause();
+  },{threshold:.5}).observe(reelEl);
+  reelSync();
+
+  /* Inclinación y brillo de las tarjetas */
+  if(!reduce&&window.matchMedia('(hover: hover)').matches){
+    $$('.prin-c').forEach(function(c){
+      c.addEventListener('pointermove',function(e){
+        var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+        c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%');
+        c.style.setProperty('--ry',((x-.5)*8)+'deg');c.style.setProperty('--rx',((.5-y)*8)+'deg');
+      });
+      c.addEventListener('pointerleave',function(){c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')});
+    });
+  }
+
+  /* Red de nodos en la sección de opiniones */
+  var cv=$('#net');
+  if(cv&&!reduce){
+    var ctx=cv.getContext('2d'),pts=[],W,H,dpr=Math.min(window.devicePixelRatio||1,2),run=false;
+    function size(){
+      W=cv.offsetWidth;H=cv.offsetHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+      var n=Math.round(Math.min(60,W*H/16000));pts=[];
+      for(var i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35});
+    }
+    function draw(){
+      if(!run)return;
+      ctx.clearRect(0,0,W,H);
+      for(var i=0;i<pts.length;i++){
+        var p=pts[i];p.x+=p.vx;p.y+=p.vy;
+        if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+        for(var j=i+1;j<pts.length;j++){
+          var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=dx*dx+dy*dy;
+          if(d<17000){ctx.strokeStyle='rgba(143,211,174,'+(1-d/17000)*.35+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke()}
+        }
+        ctx.fillStyle='rgba(143,211,174,.7)';ctx.beginPath();ctx.arc(p.x,p.y,2,0,6.283);ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    size();window.addEventListener('resize',size);
+    new IntersectionObserver(function(es){var v=es[0].isIntersecting;if(v&&!run){run=true;draw()}else if(!v)run=false}).observe(cv);
+  }
+
+  /* Formulario: abre WhatsApp con los datos para agendar la demo */
+  var form=$('#demoForm'),err=$('#formErr'),ok=$('#formOk');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var d=form.elements,bad=[];
+    ['nombre','negocio','industria','whatsapp'].forEach(function(n){
+      d[n].classList.remove('bad');
+      if(!d[n].value.trim())bad.push(d[n]);
+    });
+    if(bad.length){
+      bad.forEach(function(el){void el.offsetWidth;el.classList.add('bad')});
+      err.textContent='Completa todos los campos para continuar.';bad[0].focus();return;
+    }
+    if(!d.acepto.checked){err.textContent='Debes autorizar el tratamiento de datos.';return}
+    err.textContent='';
+    ok.classList.remove('on');void ok.offsetWidth;ok.classList.add('on');
+    var msg='Hola, quiero agendar una demo de Nodo.\n'+
+      'Nombre: '+d.nombre.value.trim()+'\n'+
+      'Negocio: '+d.negocio.value.trim()+'\n'+
+      'Industria: '+d.industria.value+'\n'+
+      'WhatsApp: '+d.whatsapp.value.trim()+'\n'+
+      '¿Qué horarios tienen disponibles?';
+    window.open('https://wa.me/573115633264?text='+encodeURIComponent(msg),'_blank','noopener');
+  });
+  $$('#demoForm input, #demoForm select').forEach(function(el){
+    el.addEventListener('input',function(){el.classList.remove('bad')});
+  });
+})();
+</script>
 </body>
 </html>
